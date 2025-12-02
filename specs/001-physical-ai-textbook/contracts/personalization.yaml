@@ -1,0 +1,58 @@
+openapi: 3.0.0
+info:
+  title: Personalization API
+  version: 1.0.0
+  description: API for personalizing chapter content based on user preferences.
+
+servers:
+  - url: /api/personalize
+    description: Personalization API Base Path
+
+paths:
+  /{chapter_id}:
+    post:
+      summary: Personalize content for a specific chapter
+      parameters:
+        - name: chapter_id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The unique identifier of the chapter to personalize.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                user_id:
+                  type: string
+                  format: uuid
+                  description: ID of the authenticated user.
+                personalization_params:
+                  type: object
+                  nullable: true
+                  description: Optional parameters to guide personalization (e.g., target difficulty).
+                  example: { "target_level": "beginner" }
+              required:
+                - user_id
+      responses:
+        '200':
+          description: Successfully personalized chapter content.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  chapter_id:
+                    type: string
+                  personalized_content:
+                    type: string
+                    description: The personalized version of the chapter content.
+        '401':
+          description: Unauthorized request.
+        '404':
+          description: Chapter not found.
+        '500':
+          description: Internal server error.

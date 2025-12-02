@@ -1,0 +1,22 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git fetch:*)",
+      "Bash(.specify/scripts/powershell/check-prerequisites.ps1:*)",
+      "Bash(powershell.exe:*)",
+      "Bash(claude mcp add:*)",
+      "Bash(bash:*)",
+      "Bash($env:SPECIFY_FEATURE = '1-physical-ai-textbook')",
+      "Bash(git checkout:*)",
+      "Bash(New-Item:*)",
+      "Bash(Out-Null:*)",
+      "WebSearch",
+      "Bash(git add:*)",
+      "Bash(git rm:*)",
+      "Bash(git commit:*)",
+      "Bash(git init:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}
