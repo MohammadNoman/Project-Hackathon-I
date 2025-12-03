@@ -1,0 +1,77 @@
+/**
+ * Any CSS you add here will be applied to all pages of your Docusaurus site.
+ */
+
+/* For a light theme */
+:root {
+  --ifm-color-primary: #3b82f6; /* A nice blue for primary elements */
+  --ifm-color-primary-dark: #2563eb;
+  --ifm-color-primary-darker: #1d4ed8;
+  --ifm-color-primary-darkest: #1e40af;
+  --ifm-color-primary-light: #60a5fa;
+  --ifm-color-primary-lighter: #93c5fd;
+  --ifm-color-primary-lightest: #bfdbfe;
+  --ifm-code-font-size: 95%;
+  --ifm-heading-font-weight: 600; /* Make headings a bit bolder */
+}
+
+/* For a dark theme */
+html[data-theme='dark'] {
+  --ifm-color-primary: #60a5fa; /* Lighter blue for dark mode */
+  --ifm-color-primary-dark: #3b82f6;
+  --ifm-color-primary-darker: #2563eb;
+  --ifm-color-primary-darkest: #1e40af;
+  --ifm-color-primary-light: #93c5fd;
+  --ifm-color-primary-lighter: #bfdbfe;
+  --ifm-color-primary-lightest: #dbeafe;
+}
+
+/* Custom Navbar Gradient Background */
+.navbar {
+  background: linear-gradient(90deg, #60a5fa 0%, #3b82f6 100%); /* Light blue to dark blue gradient */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+html[data-theme='dark'] .navbar {
+  background: linear-gradient(90deg, #1f2937 0%, #374151 100%); /* Darker gradient for dark mode */
+}
+
+/* Sidebar Navigation Enhancements */
+.theme-doc-sidebar-item-category-level-1 > .menu__list-item-collapsible > .menu__list-item-collapsible-content > .menu__list {
+  padding-left: 0; /* Remove default indentation for top-level categories */
+}
+
+.theme-doc-sidebar-item-category-level-1 > .menu__list-item-collapsible > .menu__link {
+  font-size: 1.1em;
+  font-weight: 700;
+  color: var(--ifm-navbar-sidebar-item-color);
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  padding: 0.5rem var(--ifm-menu-link-padding-horizontal);
+  background-color: var(--ifm-menu-link-background-color);
+  border-radius: var(--ifm-global-border-radius);
+  transition: background-color 0.2s ease-in-out;
+}
+
+.theme-doc-sidebar-item-category-level-1 > .menu__list-item-collapsible > .menu__link:hover {
+  background-color: var(--ifm-menu-link-background-color--active);
+}
+
+.theme-doc-sidebar-item-link-level-2 > .menu__link {
+  font-size: 1em;
+  font-weight: 500;
+  margin-top: 0.2rem;
+  margin-bottom: 0.2rem;
+  padding-left: calc(var(--ifm-menu-link-padding-horizontal) + 0.5rem); /* Indent sub-items */
+}
+
+/* Adjustments for active sidebar links */
+.menu__link--active {
+  color: var(--ifm-color-primary) !important;
+  font-weight: 700;
+  background-color: var(--ifm-color-primary-lightest);
+}
+
+html[data-theme='dark'] .menu__link--active {
+  background-color: var(--ifm-color-primary-darkest);
+}

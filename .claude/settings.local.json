@@ -14,7 +14,20 @@
       "Bash(git add:*)",
       "Bash(git rm:*)",
       "Bash(git commit:*)",
-      "Bash(git init:*)"
+      "Bash(git init:*)",
+      "Bash(git remote:*)",
+      "Bash(git push:*)",
+      "Bash($env:SPECIFY_FEATURE = '001-physical-ai-textbook')",
+      "Bash(export:*)",
+      "Bash(.specify/scripts/powershell/create-adr.ps1:*)",
+      "Bash(pip:*)",
+      "Bash(npm install:*)",
+      "Bash(npx create-docusaurus@latest:*)",
+      "Bash(cd:*)",
+      "Bash(npx @better-auth/cli mcp:*)",
+      "Bash(python:*)",
+      "Bash(mkdir:*)",
+      "Bash(cat:*)"
     ],
     "deny": [],
     "ask": []

@@ -1,0 +1,32 @@
+name: Deploy Docusaurus to GitHub Pages
+
+on:
+  push:
+    branches:
+      - master # or main, depending on your default branch
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - name: Install dependencies
+        run: npm install
+        working-directory: ./false/001-physical-ai-textbook-docs # Adjust this path if your Docusaurus project is directly in the root
+
+      - name: Build Docusaurus website
+        run: npm run build
+        working-directory: ./false/001-physical-ai-textbook-docs # Adjust this path if your Docusaurus project is directly in the root
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./false/001-physical-ai-textbook-docs/build # Adjust this path to your Docusaurus build output directory
