@@ -103,11 +103,9 @@ Value-based methods aim to learn an optimal value function (either V-function or
 Q-learning is an off-policy value iteration algorithm for discrete state and action spaces.
 - **Q-table:** Stores the Q-value for every state-action pair.
 - **Update Rule:** The Q-table is iteratively updated using the Bellman optimality equation:
-{/*
-```math
-Q(s, a) = Q(s, a) + \alpha [r + \gamma \max_{a\'} Q(s\', a\') - Q(s, a)]
 ```
-*/}
+Q(s, a) = Q(s, a) + \alpha [r + \gamma \max_{a\' } Q(s\', a\') - Q(s, a)]
+```
   where $\alpha$ is the learning rate, $r$ is the immediate reward, and $\max_{a'} Q(s', a')$ is the maximum Q-value in the next state $s'$.
 
 #### 3.1.2. SARSA
