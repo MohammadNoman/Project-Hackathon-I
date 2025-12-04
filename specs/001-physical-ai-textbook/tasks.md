@@ -59,37 +59,37 @@ Based on `specs/001-physical-ai-textbook/data-model.md` and `specs/001-physical-
 
 ### Sub-plan 0.2 Environment & Toolchain Setup
 
-*   [ ] **T001** [P1] [US1] Initialize Git Repository and `.gitignore` to ensure version control and exclude sensitive files.
+*   [X] **T001** [P1] [US1] Initialize Git Repository and `.gitignore` to ensure version control and exclude sensitive files.
     *   **Description**: Ensure the Git repository is initialized and a comprehensive `.gitignore` is in place.
     *   **Specific Commands/Actions (PowerShell)**: `git init; Set-Content -Path .gitignore -Value ".env`n`node_modules`n`__pycache__`n`venv`n`dist`n`build`n`*.log" -Force`
     *   **Dependencies**: Git installed.
     *   **Acceptance Criteria**: `.git` directory exists, `.gitignore` file contains specified exclusions.
-*   [ ] **T002** [P1] [US1] Install Node.js/npm (v18+) for frontend and Python/pip (3.9+) for backend.
+*   [X] **T002** [P1] [US1] Install Node.js/npm (v18+) for frontend and Python/pip (3.9+) for backend.
     *   **Description**: Verify Node.js and Python are installed, or install them if necessary.
     *   **Specific Commands/Actions (PowerShell)**: `Write-Host "Ensure Node.js (v18+) and Python (3.9+) are installed. Verify with: node -v; python --version; pip --version"`
     *   **Dependencies**: OS installation of Node.js and Python.
     *   **Acceptance Criteria**: `node -v` shows v18+, `python --version` shows 3.9+, `pip --version` shows installed.
-*   [ ] **T003** [P1] [US4] Install Claude Code and Spec-Kit Plus CLI tools.
+*   [X] **T003** [P1] [US4] Install Claude Code and Spec-Kit Plus CLI tools.
     *   **Description**: Install the necessary CLI tools for AI-driven development.
     *   **Specific Commands/Actions (PowerShell)**: `npm install -g @anthropic-ai/claude-code-cli; npm install -g spec-kit-plus-cli`
     *   **Dependencies**: Node.js/npm.
     *   **Acceptance Criteria**: `claude --version` and `spec-kit-plus --version` (or similar for Spec-Kit Plus) show successful installation.
-*   [ ] **T004** [P1] [US1] Set up Docusaurus project.
+*   [X] **T004** [P1] [US1] Set up Docusaurus project.
     *   **Description**: Create the initial Docusaurus project structure.
     *   **Specific Commands/Actions (PowerShell)**: `npx create-docusaurus@latest 001-physical-ai-textbook-docs classic` (Then move relevant files to root or manage as sub-project).
     *   **Dependencies**: Node.js/npm.
     *   **Acceptance Criteria**: A new Docusaurus project directory (e.g., `001-physical-ai-textbook-docs`) is created with a basic Docusaurus site structure.
-*   [ ] **T005** [P1] [US1] Configure GitHub Pages deployment for Docusaurus.
+*   [X] **T005** [P1] [US1] Configure GitHub Pages deployment for Docusaurus.
     *   **Description**: Set up the necessary configurations and workflows for deploying the Docusaurus site to GitHub Pages.
     *   **Specific Commands/Actions (PowerShell)**: `Write-Host "Follow Docusaurus deployment guide for GitHub Pages. This involves adding Docusaurus build script to package.json and configuring a GitHub Actions workflow (e.g., .github/workflows/deploy.yml)." `
     *   **Dependencies**: Docusaurus project setup (T004), GitHub repository.
     *   **Acceptance Criteria**: A GitHub Actions workflow file (`.github/workflows/deploy.yml`) is created/configured to deploy the Docusaurus site, and a test deployment to GitHub Pages is successful.
-*   [ ] **T006** [P1] [US2] Set up Docker Desktop for local Neon/Qdrant (optional).
+*   [X] **T006** [P1] [US2] Set up Docker Desktop for local Neon/Qdrant (optional).
     *   **Description**: Install Docker Desktop if local instances of Neon/Qdrant are preferred over cloud services for development.
     *   **Specific Commands/Actions (PowerShell)**: `Write-Host "Install Docker Desktop: https://docs.docker.com/desktop/install/windows-install/"`
     *   **Dependencies**: Windows OS.
     *   **Acceptance Criteria**: Docker Desktop is installed and running.
-*   [ ] **T007** [P1] [US2,US5] Obtain necessary API keys (OpenAI, Claude, better-auth.com, Neon, Qdrant).
+*   [X] **T007** [P1] [US2,US5] Obtain necessary API keys (OpenAI, Claude, better-auth.com, Neon, Qdrant).
     *   **Description**: Register for accounts and obtain all required API keys, storing them securely.
     *   **Specific Commands/Actions (PowerShell)**: `Write-Host "Register for accounts and obtain API keys. Securely store these in environment variables (e.g., in a .env file in backend/ and root, loaded by python-dotenv for FastAPI)."`
     *   **Dependencies**: External service accounts.
@@ -97,17 +97,17 @@ Based on `specs/001-physical-ai-textbook/data-model.md` and `specs/001-physical-
 
 ### Sub-plan 0.3 Core UI/UX & Design System Establishment
 
-*   [ ] **T008** [P1] [US1] Select and customize Docusaurus theme for branding.
+*   [X] **T008** [P1] [US1] Select and customize Docusaurus theme for branding.
     *   **Description**: Adapt the `docusaurus-theme-classic` to align with project branding.
     *   **Specific Commands/Actions (PowerShell)**: `Write-Host "Modify docusaurus.config.js and custom CSS files (e.g., src/css/custom.css) for branding."`
     *   **Dependencies**: Docusaurus project setup (T004).
     *   **Acceptance Criteria**: Docusaurus site displays custom branding (colors, fonts, basic layout adjustments) as per design guidelines.
-*   [ ] **T009** [P1] [US1] Define core color palette, typography, spacing, and iconography.
+*   [X] **T009** [P1] [US1] Define core color palette, typography, spacing, and iconography.
     *   **Description**: Establish a clean, modern design system.
     *   **UI/UX Micro-Task**: Create a small design system document or update Docusaurus CSS variables (`src/css/custom.css`).
     *   **Dependencies**: Docusaurus theme customization (T008).
     *   **Acceptance Criteria**: `src/css/custom.css` (or similar) defines global CSS variables for color palette, typography, etc.
-*   [ ] **T010** [P1] [US1] Implement responsive design principles for Docusaurus.
+*   [X] **T010** [P1] [US1] Implement responsive design principles for Docusaurus.
     *   **Description**: Ensure the Docusaurus site is responsive across various devices.
     *   **Specific Commands/Actions (PowerShell)**: `Write-Host "Ensure Docusaurus layout and custom components are responsive by using CSS media queries and flexible layouts within src/css/custom.css or component-specific CSS."`
     *   **Dependencies**: Docusaurus theme customization (T008), CSS/design system (T009).
@@ -144,7 +144,7 @@ Based on `specs/001-physical-ai-textbook/data-model.md` and `specs/001-physical-
     *   **Specific Commands/Actions (PowerShell)**: `Write-Host "Iteratively prompt Claude Code, saving output to respective markdown files (e.g., docs/module1-ros2-nervous-system/week1-intro.md) as per the outlines."`
     *   **Dependencies**: Module outlines (T013), Access to Claude Code (T003).
     *   **Acceptance Criteria**: Initial markdown content drafts are present for all major sections across the 13 modules.
-*   [ ] **T015** [P2] [US4] Generate initial ideas for assessments, quizzes, or project prompts using Claude Code.
+*   [X] **T015** [P2] [US4] Generate initial ideas for assessments, quizzes, or project prompts using Claude Code.
     *   **Description**: Use Claude Code to brainstorm and draft assessment ideas aligned with module learning outcomes.
     *   **Specific Commands/Actions (PowerShell)**: `Write-Host "Prompt Claude Code for assessment ideas, saving to docs/assessments/moduleX-assessments.md."`
     *   **Dependencies**: Module content (T014), Access to Claude Code (T003).
