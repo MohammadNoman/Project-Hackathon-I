@@ -21,6 +21,10 @@ jobs:
         run: npm install
         working-directory: ./false/001-physical-ai-textbook-docs # Adjust this path if your Docusaurus project is directly in the root
 
+      - name: Print problematic MDX file content for debugging
+        run: cat ./false/001-physical-ai-textbook-docs/docs/module8-reinforcement-learning-for-robotics/index.md
+        working-directory: ./false/001-physical-ai-textbook-docs
+
       - name: Build Docusaurus website
         run: npm run build
         working-directory: ./false/001-physical-ai-textbook-docs # Adjust this path if your Docusaurus project is directly in the root
