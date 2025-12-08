@@ -104,9 +104,9 @@ Q-learning is an off-policy value iteration algorithm for discrete state and act
 - **Q-table:** Stores the Q-value for every state-action pair.
 - **Update Rule:** The Q-table is iteratively updated using the Bellman optimality equation:
 ```
-Q(s, a) = Q(s, a) + \alpha [r + \gamma \max_{a\' } Q(s\', a\') - Q(s, a)]
+Q(s, a) = Q(s, a) + α [r + γ max_{a'} Q(s', a') - Q(s, a)]
 ```
-  where $\alpha$ is the learning rate, $r$ is the immediate reward, and $\max_{a'} Q(s', a')$ is the maximum Q-value in the next state $s'$.
+  where α is the learning rate, r is the immediate reward, and max_{a'} Q(s', a') is the maximum Q-value in the next state s'.
 
 #### 3.1.2. SARSA
 SARSA (State-Action-Reward-State-Action) is an on-policy value iteration algorithm, similar to Q-learning, but the update for $Q(s,a)$ uses the Q-value of the *next action actually taken*, $Q(s', a')$, rather than the maximum possible Q-value.
