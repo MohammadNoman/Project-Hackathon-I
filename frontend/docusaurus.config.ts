@@ -1,35 +1,25 @@
-import {themes as prismThemes} from 'prism-react-renderer';
-import type {Config} from '@docusaurus/types';
+import { themes as prismThemes } from 'prism-react-renderer';
+import type { Config } from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 
-// This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
-
 const config: Config = {
-  title: 'My Site',
-  tagline: 'Dinosaurs are cool',
+  title: 'Physical AI & Humanoid Robotics',
+  tagline: 'AI-Native Textbook for Physical AI and Humanoid Robotics',
   favicon: 'img/favicon.ico',
 
-  // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
   future: {
-    v4: true, // Improve compatibility with the upcoming Docusaurus v4
+    v4: true,
   },
 
-  // Set the production url of your site here
-  url: 'https://your-docusaurus-site.example.com',
-  // Set the /<baseUrl>/ pathname under which your site is served
-  // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: '/',
+  url: 'https://MohammadNoman.github.io',
+  baseUrl: '/Project-Hackathon-I/',
 
-  // GitHub pages deployment config.
-  // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'facebook', // Usually your GitHub org/user name.
-  projectName: 'docusaurus', // Usually your repo name.
+  organizationName: 'MohammadNoman',
+  projectName: 'Project-Hackathon-I',
 
-  onBrokenLinks: 'throw',
+  onBrokenLinks: 'warn',
+  onBrokenMarkdownLinks: 'warn',
 
-  // Even if you don't use internationalization, you can use this field to set
-  // useful metadata like html lang. For example, if your site is Chinese, you
-  // may want to replace "en" with "zh-Hans".
   i18n: {
     defaultLocale: 'en',
     locales: ['en'],
@@ -41,26 +31,10 @@ const config: Config = {
       {
         docs: {
           sidebarPath: './sidebars.ts',
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
           editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+            'https://github.com/MohammadNoman/Project-Hackathon-I/tree/master/frontend/',
         },
-        blog: {
-          showReadingTime: true,
-          feedOptions: {
-            type: ['rss', 'atom'],
-            xslt: true,
-          },
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
-          // Useful options to enforce blogging best practices
-          onInlineTags: 'warn',
-          onInlineAuthors: 'warn',
-          onUntruncatedBlogPosts: 'warn',
-        },
+        blog: false, // Disable blog for textbook
         theme: {
           customCss: './src/css/custom.css',
         },
@@ -69,34 +43,14 @@ const config: Config = {
   ],
 
   themeConfig: {
-    // Replace with your project's social card
     image: 'img/docusaurus-social-card.jpg',
     colorMode: {
       respectPrefersColorScheme: true,
     },
-    algolia: {
-      appId: 'YOUR_ALGOLIA_APP_ID',
-      apiKey: 'YOUR_ALGOLIA_SEARCH_API_KEY',
-      indexName: 'YOUR_ALGOLIA_INDEX_NAME',
-      contextualSearch: true,
-      // Optional: Specify an authorized domain for Algolia DocSearch if not using docusaurus.io
-      // externalUrlRegex: 'your-domain.com/docs/',
-
-      // Optional: Algolia search parameters
-      searchParameters: {},
-
-      // Optional: path for search page that contains <div> with id="__docusaurus_search_result_container"
-      // When you make a query, the search results are inserted into this element.
-      // You should develop a custom search page to use this feature.
-      // searchPagePath: 'search',
-
-      // Optional: `fa` icon for the search button
-      // searchIconComponent: '@docusaurus/theme-search-algolia/lib/client/theme/SearchBar',
-    },
     navbar: {
-      title: 'My Site',
+      title: 'Physical AI Textbook',
       logo: {
-        alt: 'My Site Logo',
+        alt: 'Physical AI Logo',
         src: 'img/logo.svg',
       },
       items: [
@@ -104,11 +58,20 @@ const config: Config = {
           type: 'docSidebar',
           sidebarId: 'tutorialSidebar',
           position: 'left',
-          label: 'Tutorial',
+          label: 'Modules',
         },
-        {to: '/blog', label: 'Blog', position: 'left'},
         {
-          href: 'https://github.com/facebook/docusaurus',
+          to: '/docs/glossary',
+          label: 'Glossary',
+          position: 'left',
+        },
+        {
+          to: '/docs/assessments/module1-assessments',
+          label: 'Assessments',
+          position: 'left',
+        },
+        {
+          href: 'https://github.com/MohammadNoman/Project-Hackathon-I',
           label: 'GitHub',
           position: 'right',
         },
@@ -118,50 +81,51 @@ const config: Config = {
       style: 'dark',
       links: [
         {
-          title: 'Docs',
+          title: 'Content',
           items: [
             {
-              label: 'Tutorial',
+              label: 'Introduction',
               to: '/docs/intro',
             },
-          ],
-        },
-        {
-          title: 'Community',
-          items: [
             {
-              label: 'Stack Overflow',
-              href: 'https://stackoverflow.com/questions/tagged/docusaurus',
+              label: 'Modules',
+              to: '/docs/module1-ros2-nervous-system/',
             },
             {
-              label: 'Discord',
-              href: 'https://discordapp.com/invite/docusaurus',
-            },
-            {
-              label: 'X',
-              href: 'https://x.com/docusaurus',
+              label: 'Glossary',
+              to: '/docs/glossary',
             },
           ],
         },
         {
-          title: 'More',
+          title: 'Resources',
           items: [
             {
-              label: 'Blog',
-              to: '/blog',
+              label: 'Assessments',
+              to: '/docs/assessments/module1-assessments',
             },
             {
               label: 'GitHub',
-              href: 'https://github.com/facebook/docusaurus',
+              href: 'https://github.com/MohammadNoman/Project-Hackathon-I',
+            },
+          ],
+        },
+        {
+          title: 'Project',
+          items: [
+            {
+              label: 'Physical AI Hackathon',
+              href: 'https://github.com/MohammadNoman/Project-Hackathon-I',
             },
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+      copyright: `Copyright © ${new Date().getFullYear()} Physical AI Textbook. Built with Docusaurus.`,
     },
     prism: {
       theme: prismThemes.github,
       darkTheme: prismThemes.dracula,
+      additionalLanguages: ['python', 'bash', 'yaml', 'json'],
     },
   } satisfies Preset.ThemeConfig,
 };
