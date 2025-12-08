@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="en" dir="ltr" class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-module7-humanoid-robot-manipulation-and-interaction/outline" data-has-hydrated="false">
+<head>
+<meta charset="UTF-8">
+<meta name="generator" content="Docusaurus v3.9.2">
+<title data-rh="true">Module 7: Humanoid Robot Manipulation and Interaction | My Site</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://your-docusaurus-site.example.com/img/docusaurus-social-card.jpg"><meta data-rh="true" name="twitter:image" content="https://your-docusaurus-site.example.com/img/docusaurus-social-card.jpg"><meta data-rh="true" property="og:url" content="https://your-docusaurus-site.example.com/docs/module7-humanoid-robot-manipulation-and-interaction/outline"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Module 7: Humanoid Robot Manipulation and Interaction | My Site"><meta data-rh="true" name="description" content="1. Introduction to Robot Manipulation"><meta data-rh="true" property="og:description" content="1. Introduction to Robot Manipulation"><link data-rh="true" rel="icon" href="/img/favicon.ico"><link data-rh="true" rel="canonical" href="https://your-docusaurus-site.example.com/docs/module7-humanoid-robot-manipulation-and-interaction/outline"><link data-rh="true" rel="alternate" href="https://your-docusaurus-site.example.com/docs/module7-humanoid-robot-manipulation-and-interaction/outline" hreflang="en"><link data-rh="true" rel="alternate" href="https://your-docusaurus-site.example.com/docs/module7-humanoid-robot-manipulation-and-interaction/outline" hreflang="x-default"><link data-rh="true" rel="preconnect" href="https://YOUR_ALGOLIA_APP_ID-dsn.algolia.net" crossorigin="anonymous"><link rel="alternate" type="application/rss+xml" href="/blog/rss.xml" title="My Site RSS Feed">
+<link rel="alternate" type="application/atom+xml" href="/blog/atom.xml" title="My Site Atom Feed">
+
+
+
+
+<link rel="search" type="application/opensearchdescription+xml" title="My Site" href="/opensearch.xml"><link rel="stylesheet" href="/assets/css/styles.0de9cafe.css">
+<script src="/assets/js/runtime~main.dfb1c517.js" defer="defer"></script>
+<script src="/assets/js/main.c55686cb.js" defer="defer"></script>
+</head>
+<body class="navigation-with-keyboard">
+<svg style="display: none;"><defs>
+<symbol id="theme-svg-external-link" viewBox="0 0 24 24"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></symbol>
+</defs></svg>
+<script>!function(){var t=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();document.documentElement.setAttribute("data-theme",t||(window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light")),document.documentElement.setAttribute("data-theme-choice",t||"system")}(),function(){try{const c=new URLSearchParams(window.location.search).entries();for(var[t,e]of c)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><link rel="preload" as="image" href="/img/logo.svg"><div role="region" aria-label="Skip to main content"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><nav aria-label="Main" class="theme-layout-navbar navbar navbar--fixed-top"><div class="navbar__inner"><div class="theme-layout-navbar-left navbar__items"><button aria-label="Toggle navigation bar" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand" href="/"><div class="navbar__logo"><img src="/img/logo.svg" alt="My Site Logo" class="themedComponent_mlkZ themedComponent--light_NVdE"><img src="/img/logo.svg" alt="My Site Logo" class="themedComponent_mlkZ themedComponent--dark_xIcU"></div><b class="navbar__title text--truncate">My Site</b></a><a class="navbar__item navbar__link" href="/docs/module1-ros2-nervous-system/">Tutorial</a><a class="navbar__item navbar__link" href="/blog">Blog</a></div><div class="theme-layout-navbar-right navbar__items navbar__items--right"><a href="https://github.com/facebook/docusaurus" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link">GitHub<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type="button" disabled="" title="system mode" aria-label="Switch between dark and light mode (currently system mode)"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP lightToggleIcon_pyhR"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP darkToggleIcon_wfgR"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP systemToggleIcon_QzmC"><path fill="currentColor" d="m12 21c4.971 0 9-4.029 9-9s-4.029-9-9-9-9 4.029-9 9 4.029 9 9 9zm4.95-13.95c1.313 1.313 2.05 3.093 2.05 4.95s-0.738 3.637-2.05 4.95c-1.313 1.313-3.093 2.05-4.95 2.05v-14c1.857 0 3.637 0.737 4.95 2.05z"></path></svg></button></div><div class="navbarSearchContainer_Bca1"><button type="button" class="DocSearch DocSearch-Button" aria-label="Search (Meta+k)" aria-keyshortcuts="Meta+k"><span class="DocSearch-Button-Container"><svg width="20" height="20" class="DocSearch-Search-Icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="8" stroke="currentColor" fill="none" stroke-width="1.4"></circle><path d="m21 21-4.3-4.3" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"></path></svg><span class="DocSearch-Button-Placeholder">Search</span></span><span class="DocSearch-Button-Keys"></span></button></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="theme-layout-main main-wrapper mainWrapper_z2l0"><div class="docsWrapper_hBAB"><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type="button"></button><div class="docRoot_UBD9"><main class="docMainContainer_TBSr docMainContainerEnhanced_lQrH"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_VOVn"><div class="docItemContainer_Djhp"><article><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><div class="theme-doc-markdown markdown"><header><h1>Module 7: Humanoid Robot Manipulation and Interaction</h1></header>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="1-introduction-to-robot-manipulation">1. Introduction to Robot Manipulation<a href="#1-introduction-to-robot-manipulation" class="hash-link" aria-label="Direct link to 1. Introduction to Robot Manipulation" title="Direct link to 1. Introduction to Robot Manipulation" translate="no">​</a></h2>
+<ul>
+<li class="">Importance of robot manipulation in various applications</li>
+<li class="">Types of manipulation: grasping, pushing, pulling, throwing, etc.</li>
+<li class="">Key challenges in robot manipulation</li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="2-grasping">2. Grasping<a href="#2-grasping" class="hash-link" aria-label="Direct link to 2. Grasping" title="Direct link to 2. Grasping" translate="no">​</a></h2>
+<ul>
+<li class=""><strong>2.1. Gripper Design:</strong>
+<ul>
+<li class="">Types of grippers: parallel jaw, three-finger, multi-finger, vacuum</li>
+<li class="">Design considerations: payload, object properties, environment</li>
+</ul>
+</li>
+<li class=""><strong>2.2. Grasp Planning:</strong>
+<ul>
+<li class="">Approaches to grasp planning: analytical, data-driven, learning-based</li>
+<li class="">Grasp quality metrics</li>
+</ul>
+</li>
+<li class=""><strong>2.3. Force Closure:</strong>
+<ul>
+<li class="">Definition and significance</li>
+<li class="">Conditions for force closure</li>
+</ul>
+</li>
+<li class=""><strong>2.4. Form Closure:</strong>
+<ul>
+<li class="">Definition and significance</li>
+<li class="">Conditions for form closure</li>
+</ul>
+</li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="3-manipulation-planning">3. Manipulation Planning<a href="#3-manipulation-planning" class="hash-link" aria-label="Direct link to 3. Manipulation Planning" title="Direct link to 3. Manipulation Planning" translate="no">​</a></h2>
+<ul>
+<li class=""><strong>3.1. Motion Planning for Manipulators:</strong>
+<ul>
+<li class="">Configuration space and obstacles</li>
+<li class="">Path planning algorithms: RRT, PRM, A*</li>
+<li class="">Trajectory generation</li>
+</ul>
+</li>
+<li class=""><strong>3.2. Inverse Kinematics for Reaching:</strong>
+<ul>
+<li class="">Definition and importance</li>
+<li class="">Analytical and numerical solutions</li>
+<li class="">Redundancy and singularity handling</li>
+</ul>
+</li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="4-compliant-manipulation">4. Compliant Manipulation<a href="#4-compliant-manipulation" class="hash-link" aria-label="Direct link to 4. Compliant Manipulation" title="Direct link to 4. Compliant Manipulation" translate="no">​</a></h2>
+<ul>
+<li class=""><strong>4.1. Impedance Control:</strong>
+<ul>
+<li class="">Concept and applications</li>
+<li class="">Implementation details</li>
+</ul>
+</li>
+<li class=""><strong>4.2. Admittance Control:</strong>
+<ul>
+<li class="">Concept and applications</li>
+<li class="">Comparison with impedance control</li>
+</ul>
+</li>
+<li class=""><strong>4.3. Force Control:</strong>
+<ul>
+<li class="">Basic principles of force control</li>
+<li class="">Hybrid force/position control</li>
+</ul>
+</li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="5-introduction-to-human-robot-interaction-hri">5. Introduction to Human-Robot Interaction (HRI)<a href="#5-introduction-to-human-robot-interaction-hri" class="hash-link" aria-label="Direct link to 5. Introduction to Human-Robot Interaction (HRI)" title="Direct link to 5. Introduction to Human-Robot Interaction (HRI)" translate="no">​</a></h2>
+<ul>
+<li class="">Goals of HRI: collaboration, assistance, companionship</li>
+<li class="">Challenges in HRI: safety, communication, trust, social norms</li>
+<li class="">Importance of HRI in humanoid robotics</li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="6-physical-hri">6. Physical HRI<a href="#6-physical-hri" class="hash-link" aria-label="Direct link to 6. Physical HRI" title="Direct link to 6. Physical HRI" translate="no">​</a></h2>
+<ul>
+<li class=""><strong>6.1. Shared Control:</strong>
+<ul>
+<li class="">Definition and types of shared control</li>
+<li class="">Human-in-the-loop control</li>
+</ul>
+</li>
+<li class=""><strong>6.2. Physical Guidance:</strong>
+<ul>
+<li class="">Lead-through programming</li>
+<li class="">Compliant motion for physical interaction</li>
+</ul>
+</li>
+<li class=""><strong>6.3. Human-Aware Motion Planning:</strong>
+<ul>
+<li class="">Collision avoidance with humans</li>
+<li class="">Proxemics and comfort zones</li>
+<li class="">Intent prediction</li>
+</ul>
+</li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="7-cognitive-hri">7. Cognitive HRI<a href="#7-cognitive-hri" class="hash-link" aria-label="Direct link to 7. Cognitive HRI" title="Direct link to 7. Cognitive HRI" translate="no">​</a></h2>
+<ul>
+<li class=""><strong>7.1. Speech Recognition:</strong>
+<ul>
+<li class="">Techniques and challenges in robot speech recognition</li>
+<li class="">Dialogue systems</li>
+</ul>
+</li>
+<li class=""><strong>7.2. Natural Language Understanding:</strong>
+<ul>
+<li class="">Interpreting human commands and intentions</li>
+<li class="">Semantic parsing</li>
+</ul>
+</li>
+<li class=""><strong>7.3. Gesture Recognition:</strong>
+<ul>
+<li class="">Detecting and interpreting human gestures</li>
+<li class="">Integration with speech and language</li>
+</ul>
+</li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="8-social-hri">8. Social HRI<a href="#8-social-hri" class="hash-link" aria-label="Direct link to 8. Social HRI" title="Direct link to 8. Social HRI" translate="no">​</a></h2>
+<ul>
+<li class=""><strong>8.1. Non-Verbal Communication:</strong>
+<ul>
+<li class="">Facial expressions, gaze, body posture</li>
+<li class="">Robot emotional expression</li>
+</ul>
+</li>
+<li class=""><strong>8.2. Proxemics:</strong>
+<ul>
+<li class="">Understanding and maintaining appropriate personal space</li>
+<li class="">Cultural considerations</li>
+</ul>
+</li>
+<li class=""><strong>8.3. Human-Robot Trust:</strong>
+<ul>
+<li class="">Building and maintaining trust in collaborative tasks</li>
+<li class="">Factors influencing trust: reliability, transparency, predictability</li>
+</ul>
+</li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="9-user-interfaces-for-hri">9. User Interfaces for HRI<a href="#9-user-interfaces-for-hri" class="hash-link" aria-label="Direct link to 9. User Interfaces for HRI" title="Direct link to 9. User Interfaces for HRI" translate="no">​</a></h2>
+<ul>
+<li class=""><strong>9.1. Teleoperation:</strong>
+<ul>
+<li class="">Remote control of robots</li>
+<li class="">Haptic feedback systems</li>
+</ul>
+</li>
+<li class=""><strong>9.2. Intuitive Control Methods:</strong>
+<ul>
+<li class="">Gesture-based control</li>
+<li class="">Brain-computer interfaces (BCI) for robotics</li>
+</ul>
+</li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="10-challenges-in-hri">10. Challenges in HRI<a href="#10-challenges-in-hri" class="hash-link" aria-label="Direct link to 10. Challenges in HRI" title="Direct link to 10. Challenges in HRI" translate="no">​</a></h2>
+<ul>
+<li class=""><strong>10.1. Safety:</strong>
+<ul>
+<li class="">Physical safety standards for human-robot collaboration</li>
+<li class="">Emergency stop mechanisms</li>
+</ul>
+</li>
+<li class=""><strong>10.2. Predictability:</strong>
+<ul>
+<li class="">Designing robots with predictable behavior</li>
+<li class="">Explanations of robot actions</li>
+</ul>
+</li>
+<li class=""><strong>10.3. Communication Breakdown:</strong>
+<ul>
+<li class="">Misinterpretations in verbal and non-verbal communication</li>
+<li class="">Strategies for robust communication</li>
+</ul>
+</li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="11-future-trends">11. Future Trends<a href="#11-future-trends" class="hash-link" aria-label="Direct link to 11. Future Trends" title="Direct link to 11. Future Trends" translate="no">​</a></h2>
+<ul>
+<li class="">AI-driven HRI: Reinforcement learning for adaptive interaction</li>
+<li class="">Explainable AI in manipulation: Understanding robot decisions</li>
+<li class="">Collaborative robotics: Human-robot teams in manufacturing and service</li>
+<li class="">Ethical considerations in humanoid robot interaction</li>
+</ul></div><footer class="theme-doc-footer docusaurus-mt-lg"><div class="row margin-top--sm theme-doc-footer-edit-meta-row"><div class="col noPrint_WFHX"><a href="https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/module7-humanoid-robot-manipulation-and-interaction/outline.md" target="_blank" rel="noopener noreferrer" class="theme-edit-this-page"><svg fill="currentColor" height="20" width="20" viewBox="0 0 40 40" class="iconEdit_Z9Sw" aria-hidden="true"><g><path d="m34.5 11.7l-3 3.1-6.3-6.3 3.1-3q0.5-0.5 1.2-0.5t1.1 0.5l3.9 3.9q0.5 0.4 0.5 1.1t-0.5 1.2z m-29.5 17.1l18.4-18.5 6.3 6.3-18.4 18.4h-6.3v-6.2z"></path></g></svg>Edit this page</a></div><div class="col lastUpdated_JAkA"></div></div></footer></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="Docs pages"></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#1-introduction-to-robot-manipulation" class="table-of-contents__link toc-highlight">1. Introduction to Robot Manipulation</a></li><li><a href="#2-grasping" class="table-of-contents__link toc-highlight">2. Grasping</a></li><li><a href="#3-manipulation-planning" class="table-of-contents__link toc-highlight">3. Manipulation Planning</a></li><li><a href="#4-compliant-manipulation" class="table-of-contents__link toc-highlight">4. Compliant Manipulation</a></li><li><a href="#5-introduction-to-human-robot-interaction-hri" class="table-of-contents__link toc-highlight">5. Introduction to Human-Robot Interaction (HRI)</a></li><li><a href="#6-physical-hri" class="table-of-contents__link toc-highlight">6. Physical HRI</a></li><li><a href="#7-cognitive-hri" class="table-of-contents__link toc-highlight">7. Cognitive HRI</a></li><li><a href="#8-social-hri" class="table-of-contents__link toc-highlight">8. Social HRI</a></li><li><a href="#9-user-interfaces-for-hri" class="table-of-contents__link toc-highlight">9. User Interfaces for HRI</a></li><li><a href="#10-challenges-in-hri" class="table-of-contents__link toc-highlight">10. Challenges in HRI</a></li><li><a href="#11-future-trends" class="table-of-contents__link toc-highlight">11. Future Trends</a></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer footer--dark"><div class="container container-fluid"><div class="row footer__links"><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Docs</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/intro">Tutorial</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Community</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://stackoverflow.com/questions/tagged/docusaurus" target="_blank" rel="noopener noreferrer" class="footer__link-item">Stack Overflow<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li><li class="footer__item"><a href="https://discordapp.com/invite/docusaurus" target="_blank" rel="noopener noreferrer" class="footer__link-item">Discord<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li><li class="footer__item"><a href="https://x.com/docusaurus" target="_blank" rel="noopener noreferrer" class="footer__link-item">X<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">More</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/blog">Blog</a></li><li class="footer__item"><a href="https://github.com/facebook/docusaurus" target="_blank" rel="noopener noreferrer" class="footer__link-item">GitHub<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2025 My Project, Inc. Built with Docusaurus.</div></div></div></footer></div>
+</body>
+</html>
