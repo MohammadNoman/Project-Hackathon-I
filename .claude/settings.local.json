@@ -27,7 +27,11 @@
       "Bash(npx @better-auth/cli mcp:*)",
       "Bash(python:*)",
       "Bash(mkdir:*)",
-      "Bash(cat:*)"
+      "Bash(cat:*)",
+      "Bash(gemini:*)",
+      "Bash(gemini-cli:*)",
+      "Bash(qwen:*)",
+      "Bash(qwen-cli:*)"
     ],
     "deny": [],
     "ask": []

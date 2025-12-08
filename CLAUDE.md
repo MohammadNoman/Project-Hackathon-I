@@ -23,7 +23,94 @@ You are an expert AI assistant specializing in Spec-Driven Development (SDD). Yo
   - General → `history/prompts/general/`
 - ADR suggestions: when an architecturally significant decision is detected, suggest: "📋 Architectural decision detected: <brief>. Document? Run `/sp.adr <title>`." Never auto‑create ADRs; require user consent.
 
+
+## Agent & Skills Usage (Token Optimization)
+
+This project has specialized **Subagents** and **Skills** in `.claude/agents/` and `.claude/skills/` to reduce token consumption.
+
+### When to Use Subagents (Isolated Context)
+
+Subagents operate in isolated context windows. **Automatically delegate** to subagents for focused implementation tasks:
+
+**Authentication Tasks** → Use `@better-auth-agent`:
+- When implementing `/api/auth/signup` or `/api/auth/signin` endpoints
+- When creating auth forms or user profile storage
+- When tasks mention "Better Auth", "signup", "signin", or "authentication"
+- Reference: `specs/001-physical-ai-textbook/contracts/auth.yaml`
+
+**RAG Chatbot Tasks** → Use `@chatkit-agent`:
+- When implementing RAG logic, Qdrant integration, or OpenAI Agents SDK
+- When creating `/api/chatbot/query` endpoint or content indexing
+- When tasks mention "RAG", "chatbot", "embedding", "vector search", or "Qdrant"
+- Reference: `specs/001-physical-ai-textbook/contracts/chatbot.yaml`
+
+**Frontend/React Tasks** → Use `@nextjs-agent`:
+- When building Next.js pages, React components, or Docusaurus UI
+- When creating chatbot widgets, auth forms, or interactive components
+- When tasks mention "Next.js", "React", "component", "frontend", or "UI"
+
+**SDK Integration Tasks** → Use `@sdk-agent`:
+- When integrating third-party SDKs or API clients
+- When setting up external services (OpenAI, Qdrant, Neon, Better-Auth)
+- When tasks mention "SDK", "API client", "integration", or specific service names
+
+### When to Use Skills (Auto-Loaded)
+
+Skills auto-load when relevant context is detected. Reference these patterns:
+
+**FastAPI Development** → `fastapi-patterns` skill provides:
+- Endpoint templates, database sessions, Pydantic schemas
+- Error handling patterns, CORS configuration
+- Use when writing FastAPI code
+
+**Docusaurus Development** → `docusaurus-patterns` skill provides:
+- React component templates, MDX integration patterns
+- Sidebar configuration, custom theme colors
+- Use when building Docusaurus components
+
+**Delegation to External CLIs** → Use commands when appropriate:
+- **Large content generation** → `/delegate-gemini <task>` (saves ~80% tokens)
+- **Bulk outlines/summaries** → `/delegate-gemini <task>`
+- **Code generation alternatives** → `/delegate-qwen <task>`
+
+### Invocation Patterns
+
+**Subagent Invocation**:
+```
+@chatkit-agent implement T028-T030 from tasks.md
+@better-auth-agent implement signup endpoint with background questions
+@nextjs-agent create chatbot widget component
+```
+
+**Command Shortcuts**:
+```
+/delegate-gemini Generate detailed outlines for all 13 course modules
+/impl-auth complete authentication flow
+/impl-chatbot RAG query endpoint with selected_text support
+```
+
+### Token Saving Strategy
+
+**ALWAYS prefer agents/skills when:**
+1. Task is large and focused (RAG implementation, auth system)
+2. Task involves bulk content generation (module outlines, assessments)
+3. Task has clear boundaries defined in specs/contracts
+
+**Continue in main context when:**
+1. Task spans multiple areas (coordination required)
+2. User explicitly asks NOT to use agents
+3. Quick one-off questions or clarifications
+
+### Compliance with SDD
+
+**All agents MUST reference specs:**
+- Read relevant specs from `specs/001-physical-ai-textbook/`
+- Follow contracts in `specs/001-physical-ai-textbook/contracts/`
+- Align with tasks in `specs/001-physical-ai-textbook/tasks.md`
+- Agents enhance SDD workflow, don't replace it
+
 ## Development Guidelines
+
 
 ### 1. Authoritative Source Mandate:
 Agents MUST prioritize and use MCP tools and CLI commands for all information gathering and task execution. NEVER assume a solution from internal knowledge; all methods require external verification.
