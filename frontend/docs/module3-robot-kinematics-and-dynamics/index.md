@@ -12,6 +12,68 @@ Kinematics is the branch of mechanics that describes the motion of points, bodie
 
 Dynamics, in contrast, is the study of motion while considering the forces and torques that cause or affect that motion. In robotics, dynamics deals with the relationship between the forces and torques applied to a robot's joints and the resulting motion of its links. This includes understanding inertia, gravity, friction, and other external forces. Dynamics answers questions like: "What forces are required at each joint to achieve a desired acceleration of the end-effector?"
 
+### Kinematics vs Dynamics Overview
+
+```mermaid
+flowchart LR
+    subgraph Kinematics["Kinematics (Geometry)"]
+        direction TB
+        FK[Forward Kinematics<br/>Joints → End-Effector]
+        IK[Inverse Kinematics<br/>End-Effector → Joints]
+        JAC[Jacobian<br/>Velocity Mapping]
+    end
+
+    subgraph Dynamics["Dynamics (Forces)"]
+        direction TB
+        FD[Forward Dynamics<br/>Torques → Acceleration]
+        ID[Inverse Dynamics<br/>Acceleration → Torques]
+        DYN[Dynamic Model<br/>M(q)q̈ + C(q,q̇)q̇ + g(q) = τ]
+    end
+
+    subgraph Control["Motion Control"]
+        TC[Trajectory Control]
+        FC[Force Control]
+        IC[Impedance Control]
+    end
+
+    FK --> JAC
+    IK --> JAC
+    JAC --> FD
+    JAC --> ID
+    FD & ID --> DYN
+    DYN --> TC & FC & IC
+
+    style Kinematics fill:#1a1a2e,stroke:#00f3ff,color:#fff
+    style Dynamics fill:#16213e,stroke:#bc13fe,color:#fff
+    style Control fill:#0f3460,stroke:#39ff14,color:#fff
+```
+
+### Robot Arm Kinematic Chain
+
+```mermaid
+flowchart LR
+    subgraph Chain["Serial Manipulator Kinematic Chain"]
+        BASE[Base Frame<br/>World Origin] --> J1[Joint 1<br/>θ₁]
+        J1 --> L1[Link 1]
+        L1 --> J2[Joint 2<br/>θ₂]
+        J2 --> L2[Link 2]
+        L2 --> J3[Joint 3<br/>θ₃]
+        J3 --> L3[Link 3]
+        L3 --> EE[End-Effector<br/>Position & Orientation]
+    end
+
+    subgraph Transform["Transformation"]
+        DH[DH Parameters<br/>a, α, d, θ]
+        HT[Homogeneous<br/>Transform T]
+        DH --> HT
+    end
+
+    Chain --> Transform
+
+    style Chain fill:#1a1a2e,stroke:#00f3ff,color:#fff
+    style Transform fill:#16213e,stroke:#bc13fe,color:#fff
+```
+
 ### 1.2. Importance in Robotics
 
 Kinematics and dynamics are foundational to nearly every aspect of robotics.

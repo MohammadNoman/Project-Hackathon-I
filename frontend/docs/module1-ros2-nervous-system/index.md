@@ -16,6 +16,79 @@ For physical AI and humanoid robotics, ROS 2 is indispensable due to its ability
 
 ## 2. Key Concepts
 
+### ROS 2 Architecture Overview
+
+```mermaid
+flowchart TB
+    subgraph Application["Application Layer"]
+        N1[Node 1<br/>Camera Driver]
+        N2[Node 2<br/>Image Processing]
+        N3[Node 3<br/>Motion Controller]
+        N4[Node 4<br/>Path Planner]
+    end
+
+    subgraph Middleware["ROS 2 Middleware Layer"]
+        RCL[ROS Client Library<br/>rclpy / rclcpp]
+        RMW[RMW Abstraction Layer]
+        DDS[DDS Implementation<br/>Fast-DDS / Cyclone DDS]
+    end
+
+    subgraph Communication["Communication Patterns"]
+        T[Topics<br/>Pub/Sub]
+        S[Services<br/>Request/Reply]
+        A[Actions<br/>Goal/Feedback/Result]
+        P[Parameters<br/>Configuration]
+    end
+
+    subgraph OS["Operating System"]
+        Linux[Linux / Windows / macOS]
+        RTOS[Real-Time OS]
+    end
+
+    N1 & N2 & N3 & N4 --> RCL
+    RCL --> T & S & A & P
+    T & S & A & P --> RMW
+    RMW --> DDS
+    DDS --> Linux & RTOS
+
+    style Application fill:#1a1a2e,stroke:#00f3ff,color:#fff
+    style Middleware fill:#16213e,stroke:#bc13fe,color:#fff
+    style Communication fill:#0f3460,stroke:#00f3ff,color:#fff
+    style OS fill:#1a1a2e,stroke:#39ff14,color:#fff
+```
+
+### ROS 2 Communication Flow
+
+```mermaid
+sequenceDiagram
+    participant Pub as Publisher Node
+    participant DDS as DDS Middleware
+    participant Sub as Subscriber Node
+    participant Srv as Service Server
+    participant Act as Action Server
+
+    Note over Pub,Act: Topic-based Communication (Async)
+    Pub->>DDS: Publish message to /sensor_data
+    DDS->>Sub: Deliver message
+    Sub-->>Sub: Process data
+
+    Note over Pub,Act: Service Communication (Sync)
+    Pub->>DDS: Request /get_status
+    DDS->>Srv: Forward request
+    Srv->>DDS: Send response
+    DDS->>Pub: Deliver response
+
+    Note over Pub,Act: Action Communication (Long-running)
+    Pub->>DDS: Send goal to /navigate
+    DDS->>Act: Forward goal
+    loop Feedback
+        Act->>DDS: Send progress feedback
+        DDS->>Pub: Deliver feedback
+    end
+    Act->>DDS: Send result
+    DDS->>Pub: Deliver result
+```
+
 Understanding the core concepts of ROS 2 is crucial for effective development:
 
 *   **Nodes:** The fundamental building blocks of a ROS 2 system. Each node is an executable process that performs a specific task (e.g., reading from a camera, controlling a motor, processing sensor data). Nodes communicate with each other to achieve complex robot behaviors.

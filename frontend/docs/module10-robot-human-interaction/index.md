@@ -24,6 +24,72 @@ HRI is inherently multidisciplinary, drawing insights and methodologies from:
 *   **Ergonomics:** Designing robots and human-robot systems to optimize human well-being and overall system performance.
 *   **Design (Industrial Design, Interaction Design, UX Design):** Creating robots that are aesthetically pleasing, functional, and provide a positive user experience.
 
+### HRI System Architecture
+
+```mermaid
+flowchart TB
+    subgraph Human["Human"]
+        INTENT[Intent/Goal]
+        ACTION[Actions<br/>Speech, Gesture, Touch]
+        PERCEP[Perception<br/>Visual, Audio]
+    end
+
+    subgraph Interface["Interaction Interface"]
+        SPEECH[Speech Recognition<br/>& Synthesis]
+        VISION[Computer Vision<br/>Gesture, Pose, Face]
+        HAPTIC[Haptic Feedback<br/>Force, Vibration]
+        GUI[Visual Display<br/>AR/VR, Screen]
+    end
+
+    subgraph Robot["Robot System"]
+        UNDERSTAND[Intent Recognition]
+        PLAN[Action Planning]
+        EXEC[Safe Execution]
+        FEEDBACK[Feedback Generation]
+    end
+
+    Human <-->|Bidirectional| Interface
+    Interface <-->|Bidirectional| Robot
+
+    INTENT --> ACTION
+    PERCEP --> INTENT
+    FEEDBACK --> GUI & HAPTIC
+
+    style Human fill:#1a1a2e,stroke:#00f3ff,color:#fff
+    style Interface fill:#16213e,stroke:#bc13fe,color:#fff
+    style Robot fill:#0f3460,stroke:#39ff14,color:#fff
+```
+
+### Human-Robot Collaboration Modes
+
+```mermaid
+stateDiagram-v2
+    direction LR
+
+    [*] --> Coexistence
+
+    state "Interaction Modes" as Modes {
+        Coexistence: Coexistence<br/>Same space, no task
+        Cooperation: Cooperation<br/>Shared goal, separate tasks
+        Collaboration: Collaboration<br/>Shared task, real-time
+
+        Coexistence --> Cooperation: Task assignment
+        Cooperation --> Collaboration: Tighter coupling
+        Collaboration --> Cooperation: Subtask complete
+    }
+
+    state "Safety Levels" as Safety {
+        SafeStop: Safe Stop<br/>Emergency halt
+        SpeedLimit: Speed Limiting<br/>Reduced velocity
+        ForceLimit: Force Limiting<br/>Compliant motion
+    }
+
+    Modes --> Safety: Safety monitoring
+    Safety --> Modes: Safe to continue
+
+    Modes --> [*]: Task complete
+```
+
 ## 10.2 Types of HRI
 
 HRI can be categorized based on various dimensions, providing a framework for understanding the diverse ways humans and robots can interact.

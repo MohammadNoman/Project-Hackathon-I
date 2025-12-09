@@ -11,6 +11,88 @@ The field of robotics has traditionally relied on explicit programming, where ev
 *   **Improving Performance over Time:** Just like humans, robots can learn from their mistakes and refine their skills. Through repeated interactions and feedback, learning algorithms enable robots to optimize their actions, achieve higher accuracy, speed, or efficiency, and continuously get better at their designated tasks.
 *   **Reducing Manual Programming Effort:** The traditional programming paradigm is labor-intensive and prone to errors. Robot learning promises to significantly reduce the development time and effort required to deploy robots in diverse applications, shifting the focus from detailed command specification to defining objectives and providing learning experiences.
 
+### Robot Learning Paradigms
+
+```mermaid
+flowchart TB
+    subgraph Paradigms["Learning Paradigms"]
+        direction TB
+
+        subgraph Supervised["Supervised Learning"]
+            SL_IN[Labeled Data<br/>Input-Output Pairs]
+            SL_MODEL[Model Training]
+            SL_OUT[Classification<br/>Regression]
+            SL_IN --> SL_MODEL --> SL_OUT
+        end
+
+        subgraph Reinforcement["Reinforcement Learning"]
+            RL_ENV[Environment]
+            RL_AGENT[Agent]
+            RL_REW[Reward Signal]
+            RL_POL[Policy π]
+            RL_AGENT -->|Action| RL_ENV
+            RL_ENV -->|State| RL_AGENT
+            RL_ENV -->|Reward| RL_REW
+            RL_REW --> RL_POL
+        end
+
+        subgraph Imitation["Imitation Learning"]
+            IL_DEMO[Expert Demo]
+            IL_OBS[Observation]
+            IL_CLONE[Behavior Cloning]
+            IL_POL[Learned Policy]
+            IL_DEMO --> IL_OBS --> IL_CLONE --> IL_POL
+        end
+    end
+
+    subgraph Applications["Robotic Applications"]
+        MANIP[Manipulation]
+        NAV[Navigation]
+        LOCO[Locomotion]
+        HRI[Human Interaction]
+    end
+
+    Supervised --> MANIP & NAV
+    Reinforcement --> LOCO & MANIP
+    Imitation --> HRI & MANIP
+
+    style Paradigms fill:#1a1a2e,stroke:#00f3ff,color:#fff
+    style Supervised fill:#16213e,stroke:#00f3ff,color:#fff
+    style Reinforcement fill:#16213e,stroke:#bc13fe,color:#fff
+    style Imitation fill:#16213e,stroke:#39ff14,color:#fff
+    style Applications fill:#0f3460,stroke:#bc13fe,color:#fff
+```
+
+### Learning Pipeline for Robotics
+
+```mermaid
+sequenceDiagram
+    participant E as Environment
+    participant R as Robot
+    participant D as Data Collection
+    participant M as ML Model
+    participant P as Policy
+
+    Note over E,P: Training Phase
+    loop Data Collection
+        R->>E: Execute Action
+        E->>R: Return State + Reward
+        R->>D: Store Experience
+    end
+
+    D->>M: Training Data
+    M->>M: Optimize Parameters
+    M->>P: Deploy Policy
+
+    Note over E,P: Deployment Phase
+    loop Real-time Control
+        E->>R: Current State
+        R->>P: Query Policy
+        P->>R: Optimal Action
+        R->>E: Execute Action
+    end
+```
+
 ### Types of Learning in Robotics
 
 The landscape of robot learning is rich and diverse, drawing inspiration from various subfields of machine learning. Here are the primary types of learning employed in robotics:

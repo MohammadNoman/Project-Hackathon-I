@@ -7,6 +7,77 @@
 *   **Historical Context:** Trace the evolution of ethical thought in robotics, from Asimov's Laws to contemporary debates.
 *   **Stakeholders:** Identify key stakeholders in robot ethics, including designers, manufacturers, users, and society at large.
 
+### Robot Ethics Framework
+
+```mermaid
+flowchart TB
+    subgraph Principles["Core Ethical Principles"]
+        AUT[Autonomy<br/>Robot Agency]
+        BEN[Beneficence<br/>Do Good]
+        NON[Non-maleficence<br/>Avoid Harm]
+        JUST[Justice<br/>Fairness]
+        ACC[Accountability<br/>Responsibility]
+        PRIV[Privacy<br/>Data Protection]
+    end
+
+    subgraph Stakeholders["Stakeholders"]
+        DES[Designers]
+        MAN[Manufacturers]
+        USE[Users]
+        SOC[Society]
+        REG[Regulators]
+    end
+
+    subgraph Applications["Application Domains"]
+        HEALTH[Healthcare]
+        MIL[Military/LAWS]
+        AUTO[Autonomous Vehicles]
+        HOME[Service Robots]
+        WORK[Workplace]
+    end
+
+    Principles --> Applications
+    Stakeholders --> Principles
+    Applications --> SOC
+
+    style Principles fill:#1a1a2e,stroke:#00f3ff,color:#fff
+    style Stakeholders fill:#16213e,stroke:#bc13fe,color:#fff
+    style Applications fill:#0f3460,stroke:#39ff14,color:#fff
+```
+
+### Safety Standards Hierarchy
+
+```mermaid
+flowchart LR
+    subgraph Standards["Safety Standards"]
+        ISO[ISO 10218<br/>Industrial Robots]
+        TS[ISO/TS 15066<br/>Collaborative Robots]
+        ANSI[ANSI/RIA<br/>Safety Requirements]
+    end
+
+    subgraph Assessment["Risk Assessment"]
+        HAZ[Hazard Identification]
+        RISK[Risk Analysis]
+        MIT[Mitigation Measures]
+        VAL[Validation Testing]
+    end
+
+    subgraph Levels["Safety Levels"]
+        L1[Cat B<br/>Basic]
+        L2[Cat 2<br/>Monitored]
+        L3[Cat 3<br/>Safe Control]
+        L4[Cat 4<br/>Safety-Rated]
+    end
+
+    Standards --> Assessment
+    Assessment --> HAZ --> RISK --> MIT --> VAL
+    MIT --> Levels
+
+    style Standards fill:#1a1a2e,stroke:#00f3ff,color:#fff
+    style Assessment fill:#16213e,stroke:#bc13fe,color:#fff
+    style Levels fill:#0f3460,stroke:#39ff14,color:#fff
+```
+
 ## 11.2 Core Ethical Principles in Robotics
 
 *   **Autonomy:** Discuss the ethical implications of increasing robot autonomy, including questions of responsibility, decision-making, and moral agency.

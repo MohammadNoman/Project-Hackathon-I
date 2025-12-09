@@ -24,6 +24,73 @@ Humanoid robots are a fascinating and rapidly evolving field of robotics, distin
 
 Understanding the physical structure of a humanoid robot is fundamental to comprehending its capabilities and limitations. Just like the human body, a humanoid robot is a complex assembly of joints, links, and an intricate sensor suite.
 
+### Humanoid Robot Architecture
+
+```mermaid
+flowchart TB
+    subgraph Body["Humanoid Body Structure"]
+        HEAD[Head<br/>2-3 DoF]
+        TORSO[Torso<br/>3 DoF]
+
+        subgraph Arms["Arms (×2)"]
+            SHOULDER[Shoulder<br/>3 DoF]
+            ELBOW[Elbow<br/>1 DoF]
+            WRIST[Wrist<br/>3 DoF]
+            HAND[Hand<br/>12-20 DoF]
+        end
+
+        subgraph Legs["Legs (×2)"]
+            HIP[Hip<br/>3 DoF]
+            KNEE[Knee<br/>1 DoF]
+            ANKLE[Ankle<br/>2 DoF]
+            FOOT[Foot Contact]
+        end
+    end
+
+    HEAD --> TORSO
+    TORSO --> SHOULDER & HIP
+    SHOULDER --> ELBOW --> WRIST --> HAND
+    HIP --> KNEE --> ANKLE --> FOOT
+
+    subgraph Total["Total DoF"]
+        DOF[30-50+ Degrees<br/>of Freedom]
+    end
+
+    Body --> DOF
+
+    style Body fill:#1a1a2e,stroke:#00f3ff,color:#fff
+    style Arms fill:#16213e,stroke:#bc13fe,color:#fff
+    style Legs fill:#16213e,stroke:#39ff14,color:#fff
+    style Total fill:#0f3460,stroke:#00f3ff,color:#fff
+```
+
+### Bipedal Walking Gait Cycle
+
+```mermaid
+stateDiagram-v2
+    direction LR
+
+    [*] --> DoubleSupport1: Initial Stance
+
+    state "Walking Cycle" as WalkCycle {
+        DoubleSupport1: Double Support<br/>(Both feet on ground)
+        SingleSupportR: Single Support<br/>(Right leg stance)
+        SwingL: Left Leg Swing
+        DoubleSupport2: Double Support<br/>(Weight transfer)
+        SingleSupportL: Single Support<br/>(Left leg stance)
+        SwingR: Right Leg Swing
+
+        DoubleSupport1 --> SingleSupportR: Weight shift right
+        SingleSupportR --> SwingL: Left toe-off
+        SwingL --> DoubleSupport2: Left heel strike
+        DoubleSupport2 --> SingleSupportL: Weight shift left
+        SingleSupportL --> SwingR: Right toe-off
+        SwingR --> DoubleSupport1: Right heel strike
+    }
+
+    WalkCycle --> [*]: Stop command
+```
+
 ### Degrees of Freedom (DoF)
 - **Understanding DoF in Humanoids**: Degrees of Freedom refer to the number of independent parameters that define the configuration of a robotic system. In humanoids, each joint (like a shoulder, elbow, or knee) contributes to the overall DoF. A high number of DoF allows for greater dexterity and flexibility but also increases control complexity.
 - **Impact on Maneuverability and Complexity**: A robot with more DoF can perform a wider range of movements and adapt to more diverse tasks. However, controlling these many DoF simultaneously to achieve stable and coordinated motion is a significant computational challenge.

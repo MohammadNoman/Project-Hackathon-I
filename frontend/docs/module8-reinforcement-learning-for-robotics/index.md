@@ -31,6 +31,78 @@ The real world is messy and exhibits complexities that are difficult to capture 
 #### 1.2.4. Reward Design Difficulty
 Designing an effective reward function that accurately reflects the desired robotic behavior is often non-trivial. Poorly designed rewards can lead to unintended behaviors or "reward hacking," where the robot finds loopholes to maximize rewards without achieving the actual goal. Crafting a reward function that is both informative (dense) and aligned with the task objective is a significant art and science.
 
+### RL Agent-Environment Loop
+
+```mermaid
+flowchart LR
+    subgraph Agent["RL Agent"]
+        POL[Policy π]
+        VAL[Value Function V/Q]
+    end
+
+    subgraph Environment["Robot Environment"]
+        SIM[Simulation<br/>or Real World]
+        REW[Reward Function]
+    end
+
+    Agent -->|Action a_t| Environment
+    Environment -->|State s_t+1| Agent
+    Environment -->|Reward r_t| Agent
+
+    POL <--> VAL
+
+    style Agent fill:#1a1a2e,stroke:#00f3ff,color:#fff
+    style Environment fill:#16213e,stroke:#bc13fe,color:#fff
+```
+
+### Deep RL Algorithm Taxonomy
+
+```mermaid
+flowchart TB
+    subgraph RL["Reinforcement Learning"]
+        direction TB
+
+        subgraph ModelFree["Model-Free"]
+            subgraph ValueBased["Value-Based"]
+                DQN[DQN<br/>Deep Q-Network]
+                DDQN[Double DQN]
+            end
+
+            subgraph PolicyBased["Policy-Based"]
+                PG[Policy Gradient]
+                PPO[PPO<br/>Proximal Policy Opt]
+                TRPO[TRPO]
+            end
+
+            subgraph ActorCritic["Actor-Critic"]
+                A2C[A2C/A3C]
+                SAC[SAC<br/>Soft Actor-Critic]
+                TD3[TD3]
+            end
+        end
+
+        subgraph ModelBased["Model-Based"]
+            MBPO[MBPO]
+            DREAMER[Dreamer]
+            PETS[PETS]
+        end
+    end
+
+    subgraph RobotApps["Robotic Applications"]
+        LOCO[Locomotion]
+        MANIP[Manipulation]
+        NAV[Navigation]
+    end
+
+    ModelFree --> RobotApps
+    ModelBased --> RobotApps
+
+    style RL fill:#1a1a2e,stroke:#00f3ff,color:#fff
+    style ModelFree fill:#16213e,stroke:#bc13fe,color:#fff
+    style ModelBased fill:#16213e,stroke:#39ff14,color:#fff
+    style RobotApps fill:#0f3460,stroke:#00f3ff,color:#fff
+```
+
 ## 2. Foundations of Reinforcement Learning
 
 To effectively apply RL to robotics, a solid understanding of its theoretical underpinnings is essential.

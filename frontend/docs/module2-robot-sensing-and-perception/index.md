@@ -11,6 +11,78 @@ Perception is the process by which robots interpret sensory information to form 
 *   **Interacting with the environment:** Robots often need to physically interact with objects and surfaces. Accurate perception allows them to gauge distances, identify material properties, and apply appropriate forces, ensuring safe and effective interaction.
 *   **Decision making:** The quality of a robot's decisions is directly tied to the quality of its perceptual data. Whether it's deciding the optimal path to a goal, choosing the correct tool for a task, or avoiding a collision, robust perception provides the necessary context for intelligent decision-making.
 
+### Sensor Classification Overview
+
+```mermaid
+flowchart TB
+    subgraph Sensors["Robot Sensor Types"]
+        direction TB
+
+        subgraph Contact["Contact Sensors"]
+            TS[Touch Sensors]
+            FS[Force/Torque Sensors]
+            TA[Tactile Arrays]
+        end
+
+        subgraph NonContact["Non-Contact Sensors"]
+            CAM[Cameras<br/>RGB / Depth]
+            LID[LiDAR<br/>3D Point Cloud]
+            RAD[Radar<br/>Long Range]
+            US[Ultrasonic<br/>Proximity]
+        end
+
+        subgraph Internal["Internal / Proprioceptive"]
+            ENC[Encoders<br/>Joint Position]
+            IMU[IMU<br/>Orientation]
+            GPS[GPS<br/>Global Position]
+        end
+    end
+
+    subgraph Processing["Perception Pipeline"]
+        RAW[Raw Data] --> FILT[Filtering]
+        FILT --> FEAT[Feature Extraction]
+        FEAT --> FUSE[Sensor Fusion]
+        FUSE --> WORLD[World Model]
+    end
+
+    Contact & NonContact & Internal --> RAW
+
+    style Sensors fill:#1a1a2e,stroke:#00f3ff,color:#fff
+    style Contact fill:#16213e,stroke:#bc13fe,color:#fff
+    style NonContact fill:#0f3460,stroke:#00f3ff,color:#fff
+    style Internal fill:#16213e,stroke:#39ff14,color:#fff
+    style Processing fill:#1a1a2e,stroke:#bc13fe,color:#fff
+```
+
+### Sensor Fusion Pipeline
+
+```mermaid
+sequenceDiagram
+    participant C as Camera
+    participant L as LiDAR
+    participant I as IMU
+    participant F as Fusion Module
+    participant P as Perception System
+    participant D as Decision Making
+
+    par Parallel Sensor Acquisition
+        C->>F: RGB Image + Depth
+        L->>F: 3D Point Cloud
+        I->>F: Orientation + Acceleration
+    end
+
+    F->>F: Temporal Alignment
+    F->>F: Spatial Registration
+    F->>F: Kalman Filter / EKF
+
+    F->>P: Fused State Estimate
+    P->>P: Object Detection
+    P->>P: Scene Understanding
+    P->>D: Actionable Information
+
+    Note over C,D: Real-time processing at 30-60 Hz
+```
+
 ### Overview of Different Types of Sensors
 Robot sensors can be broadly categorized based on various characteristics, each offering unique advantages and limitations.
 

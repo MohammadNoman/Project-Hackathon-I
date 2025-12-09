@@ -19,6 +19,73 @@ SLAM is a foundational technology for many autonomous systems. Its importance is
 ### Brief history and evolution of SLAM
 The concept of SLAM originated in the late 1980s, primarily in the robotics community. Early approaches focused on Extended Kalman Filters (EKF-SLAM) for small-scale environments. The 1990s saw the development of more robust techniques, including Particle Filters (FastSLAM). The advent of powerful computing and advancements in sensor technology (especially cameras and LiDAR) in the 2000s led to the proliferation of various SLAM algorithms, including graph-based SLAM and modern Visual SLAM methods like ORB-SLAM and LSD-SLAM. Today, research continues to push the boundaries with semantic and learning-based SLAM.
 
+### SLAM Architecture Overview
+
+```mermaid
+flowchart TB
+    subgraph Sensors["Sensor Input"]
+        CAM[Camera<br/>Visual Features]
+        LID[LiDAR<br/>Point Cloud]
+        IMU[IMU<br/>Motion]
+        ENC[Encoders<br/>Odometry]
+    end
+
+    subgraph Frontend["SLAM Frontend"]
+        FEAT[Feature Extraction]
+        MATCH[Feature Matching]
+        ODOM[Visual/Wheel Odometry]
+        LOOP[Loop Closure Detection]
+    end
+
+    subgraph Backend["SLAM Backend"]
+        OPT[Graph Optimization]
+        BA[Bundle Adjustment]
+        FILT[Kalman/Particle Filter]
+    end
+
+    subgraph Output["SLAM Output"]
+        MAP[Global Map]
+        POSE[Robot Pose]
+        TRAJ[Trajectory]
+    end
+
+    Sensors --> Frontend
+    Frontend --> Backend
+    Backend --> Output
+    LOOP -.->|Constraint| OPT
+
+    style Sensors fill:#1a1a2e,stroke:#00f3ff,color:#fff
+    style Frontend fill:#16213e,stroke:#bc13fe,color:#fff
+    style Backend fill:#0f3460,stroke:#39ff14,color:#fff
+    style Output fill:#1a1a2e,stroke:#00f3ff,color:#fff
+```
+
+### SLAM Loop Closure Process
+
+```mermaid
+sequenceDiagram
+    participant R as Robot
+    participant F as Feature Detector
+    participant DB as Feature Database
+    participant O as Optimizer
+
+    R->>F: New frame captured
+    F->>F: Extract features (ORB, SIFT)
+    F->>DB: Query similar features
+
+    alt Loop Detected
+        DB->>F: Match found (visited location)
+        F->>O: Add loop constraint
+        O->>O: Re-optimize graph
+        O->>R: Corrected trajectory + map
+    else No Loop
+        F->>DB: Add new features
+        F->>R: Update local map
+    end
+
+    Note over R,O: Loop closure corrects accumulated drift
+```
+
 ## 2. Localization
 
 Localization is the process of determining an agent's pose (position and orientation) within a known map. In SLAM, this map is initially unknown or being built simultaneously.

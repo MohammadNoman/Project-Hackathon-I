@@ -21,6 +21,76 @@ The AI powering these robots has evolved significantly:
 
 These advancements form the bedrock upon which the future of humanoid robotics and AI will be built, pushing the boundaries of what is possible.
 
+### Evolution of Humanoid Robotics
+
+```mermaid
+timeline
+    title Humanoid Robotics Evolution
+    section Past (1990-2010)
+        ASIMO : Honda ASIMO
+        : Basic walking
+        : Pre-programmed behaviors
+    section Present (2010-2025)
+        Atlas : Boston Dynamics Atlas
+        Tesla Bot : Tesla Optimus
+        : Dynamic locomotion
+        : AI-powered perception
+        : Limited autonomy
+    section Near Future (2025-2035)
+        : General-purpose robots
+        : Natural language interaction
+        : Household integration
+        : Healthcare assistance
+    section Far Future (2035+)
+        : AGI-powered humanoids
+        : Full autonomy
+        : Human-level dexterity
+        : Societal integration
+```
+
+### Future Humanoid AI Architecture
+
+```mermaid
+flowchart TB
+    subgraph Cognition["Cognitive Layer"]
+        AGI[AGI Core<br/>Reasoning & Planning]
+        LLM[Language Model<br/>Communication]
+        VLM[Vision-Language<br/>Scene Understanding]
+        EMO[Emotional AI<br/>Social Intelligence]
+    end
+
+    subgraph Skills["Skill Layer"]
+        MANIP[Manipulation<br/>Skills Library]
+        LOCO[Locomotion<br/>Skills Library]
+        NAV[Navigation<br/>Skills Library]
+        HRI[Interaction<br/>Skills Library]
+    end
+
+    subgraph Physical["Physical Layer"]
+        PERC[Multi-Modal<br/>Perception]
+        CTRL[Whole-Body<br/>Control]
+        ACT[Actuation<br/>System]
+        SAFE[Safety<br/>System]
+    end
+
+    subgraph World["World Integration"]
+        HOME[Smart Home]
+        CITY[Smart City]
+        WORK[Workplace]
+        HEALTH[Healthcare]
+    end
+
+    Cognition --> Skills
+    Skills --> Physical
+    Physical --> World
+    AGI <--> LLM & VLM & EMO
+
+    style Cognition fill:#1a1a2e,stroke:#00f3ff,color:#fff
+    style Skills fill:#16213e,stroke:#bc13fe,color:#fff
+    style Physical fill:#0f3460,stroke:#39ff14,color:#fff
+    style World fill:#1a1a2e,stroke:#00f3ff,color:#fff
+```
+
 ## 2. Long-Term Vision for Humanoid Robotics
 
 The long-term vision for humanoid robotics extends far beyond current capabilities, envisioning a future where intelligent robots are integral to every facet of human life. This future is characterized by general-purpose humanoids capable of seamless integration into diverse environments and performing a multitude of tasks.

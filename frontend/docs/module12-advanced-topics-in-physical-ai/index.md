@@ -6,6 +6,79 @@ This module delves into cutting-edge research and advanced methodologies at the 
 
 Deep Reinforcement Learning (DRL) has emerged as a powerful paradigm for enabling robots to learn complex behaviors through trial and error, by interacting with their environment. By combining the perceptual capabilities of deep neural networks with the decision-making framework of reinforcement learning, DRL allows robots to tackle tasks that are difficult to program manually, adapting to dynamic and uncertain conditions.
 
+### Advanced Physical AI Technology Stack
+
+```mermaid
+flowchart TB
+    subgraph AI["Advanced AI Techniques"]
+        DRL[Deep Reinforcement<br/>Learning]
+        IL[Imitation Learning]
+        SSL[Self-Supervised<br/>Learning]
+        FM[Foundation Models<br/>LLMs + VLMs]
+    end
+
+    subgraph Control["Advanced Control"]
+        MPC[Model Predictive<br/>Control]
+        WBC[Whole-Body<br/>Control]
+        HRL[Hierarchical RL]
+        META[Meta-Learning]
+    end
+
+    subgraph Hardware["Hardware Innovation"]
+        SOFT[Soft Robotics]
+        NEU[Neuromorphic<br/>Computing]
+        ACT[Novel Actuators<br/>SEA, Hydraulic]
+        SENS[Advanced Sensing]
+    end
+
+    subgraph Sim2Real["Sim-to-Real Transfer"]
+        SIM[High-Fidelity<br/>Simulation]
+        DR[Domain<br/>Randomization]
+        ADAPT[Online<br/>Adaptation]
+    end
+
+    AI --> Control
+    Control --> Hardware
+    SIM --> AI
+    DR --> AI
+    Hardware --> ADAPT
+
+    style AI fill:#1a1a2e,stroke:#00f3ff,color:#fff
+    style Control fill:#16213e,stroke:#bc13fe,color:#fff
+    style Hardware fill:#0f3460,stroke:#39ff14,color:#fff
+    style Sim2Real fill:#1a1a2e,stroke:#bc13fe,color:#fff
+```
+
+### Sim-to-Real Transfer Pipeline
+
+```mermaid
+sequenceDiagram
+    participant S as Simulator
+    participant P as Policy Network
+    participant R as Real Robot
+    participant A as Adaptation Module
+
+    Note over S,A: Training Phase
+    S->>S: Domain Randomization
+    loop Training Episodes
+        S->>P: Simulated State
+        P->>S: Action
+        S->>P: Reward + Next State
+    end
+    P->>P: Policy Converged
+
+    Note over S,A: Transfer Phase
+    P->>R: Deploy Policy
+    R->>A: Real-world State
+    A->>A: Detect Domain Gap
+    A->>P: Fine-tune Parameters
+    P->>R: Adapted Action
+
+    Note over S,A: Continual Learning
+    R->>S: Real Data Collection
+    S->>S: Update Simulation
+```
+
 ### 12.1.1 Advanced DRL Algorithms
 
 The field of DRL is rich with a variety of algorithms, each designed to address specific challenges in learning and control. These algorithms can generally be categorized based on their approach to policy learning (policy-based, value-based, or actor-critic) and how they interact with the environment (model-free or model-based).

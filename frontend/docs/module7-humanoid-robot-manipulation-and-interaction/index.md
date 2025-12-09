@@ -30,6 +30,70 @@ Despite significant advancements, robot manipulation faces several inherent chal
 *   **Real-time Computation:** Performing complex planning and control computations quickly enough to react to dynamic changes.
 *   **Generalization:** Developing manipulation skills that can generalize to novel objects and tasks without extensive re-programming.
 
+### Manipulation Pipeline
+
+```mermaid
+flowchart LR
+    subgraph Perception["Perception"]
+        CAM[Camera Input]
+        SEG[Object Segmentation]
+        POSE[Pose Estimation]
+        CAM --> SEG --> POSE
+    end
+
+    subgraph Planning["Grasp Planning"]
+        GRASP[Grasp Synthesis]
+        MOTION[Motion Planning]
+        TRAJ[Trajectory Generation]
+        GRASP --> MOTION --> TRAJ
+    end
+
+    subgraph Execution["Execution"]
+        CTRL[Force Control]
+        MANIP[Manipulation]
+        PLACE[Place/Release]
+        CTRL --> MANIP --> PLACE
+    end
+
+    Perception --> Planning --> Execution
+
+    style Perception fill:#1a1a2e,stroke:#00f3ff,color:#fff
+    style Planning fill:#16213e,stroke:#bc13fe,color:#fff
+    style Execution fill:#0f3460,stroke:#39ff14,color:#fff
+```
+
+### Grasp Types and Contact Models
+
+```mermaid
+flowchart TB
+    subgraph GraspTypes["Gripper Types"]
+        PAR[Parallel Jaw<br/>2 Contact Points]
+        TRI[Three-Finger<br/>3 Contact Points]
+        HAND[Multi-Finger Hand<br/>n Contact Points]
+        VAC[Vacuum Gripper<br/>Suction]
+    end
+
+    subgraph Closure["Grasp Stability"]
+        FC[Force Closure<br/>Resist any wrench]
+        FORM[Form Closure<br/>Geometric constraint]
+        FRIC[Friction Cone<br/>Contact model]
+    end
+
+    subgraph Control["Control Modes"]
+        POS[Position Control]
+        FORCE[Force Control]
+        IMP[Impedance Control]
+        HYB[Hybrid Control]
+    end
+
+    GraspTypes --> Closure
+    Closure --> Control
+
+    style GraspTypes fill:#1a1a2e,stroke:#00f3ff,color:#fff
+    style Closure fill:#16213e,stroke:#bc13fe,color:#fff
+    style Control fill:#0f3460,stroke:#39ff14,color:#fff
+```
+
 ## 2. Grasping
 
 Grasping is the foundational skill for robot manipulation, defining how a robot establishes stable contact with an object. A successful grasp ensures the object can be held securely and manipulated as intended.

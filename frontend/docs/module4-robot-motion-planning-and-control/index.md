@@ -24,6 +24,75 @@ Motion planning encompasses various sub-disciplities:
 *   **Trajectory Planning:** Extends path planning by adding time parametrization, specifying not only the path but also the velocities, accelerations, and often jerks along that path. It's about *how* and *when* the robot should move.
 *   **Task Planning vs. Motion Planning:** Task planning operates at a higher level of abstraction, dealing with logical sequences of actions (e.g., "pick up object A, then move to location B"). Motion planning takes these abstract tasks and translates them into concrete, executable robot movements.
 
+### Motion Planning Pipeline
+
+```mermaid
+flowchart TB
+    subgraph Input["Planning Input"]
+        START[Start Configuration]
+        GOAL[Goal Configuration]
+        ENV[Environment Model]
+        CONS[Constraints]
+    end
+
+    subgraph Planning["Planning Algorithms"]
+        direction TB
+        subgraph Sampling["Sampling-Based"]
+            RRT[RRT / RRT*]
+            PRM[PRM]
+        end
+        subgraph Search["Search-Based"]
+            ASTAR[A* Search]
+            DIJ[Dijkstra]
+        end
+        subgraph Opt["Optimization"]
+            TRAJ[Trajectory Optimization]
+            MPC[Model Predictive Control]
+        end
+    end
+
+    subgraph Output["Planning Output"]
+        PATH[Collision-Free Path]
+        TRAJ_OUT[Time-Parameterized Trajectory]
+        CMD[Motor Commands]
+    end
+
+    START & GOAL & ENV & CONS --> Planning
+    Sampling & Search --> PATH
+    PATH --> Opt
+    Opt --> TRAJ_OUT
+    TRAJ_OUT --> CMD
+
+    style Input fill:#1a1a2e,stroke:#00f3ff,color:#fff
+    style Planning fill:#16213e,stroke:#bc13fe,color:#fff
+    style Sampling fill:#0f3460,stroke:#00f3ff,color:#fff
+    style Search fill:#0f3460,stroke:#39ff14,color:#fff
+    style Opt fill:#0f3460,stroke:#bc13fe,color:#fff
+    style Output fill:#1a1a2e,stroke:#39ff14,color:#fff
+```
+
+### RRT Algorithm Flow
+
+```mermaid
+flowchart TD
+    A[Initialize Tree<br/>with Start Node] --> B{Max Iterations<br/>Reached?}
+    B -->|No| C[Sample Random<br/>Configuration q_rand]
+    C --> D[Find Nearest Node<br/>in Tree q_near]
+    D --> E[Steer Towards<br/>q_rand → q_new]
+    E --> F{Collision<br/>Free?}
+    F -->|Yes| G[Add q_new<br/>to Tree]
+    F -->|No| B
+    G --> H{Goal<br/>Reached?}
+    H -->|No| B
+    H -->|Yes| I[Extract Path<br/>Start → Goal]
+    B -->|Yes| J[Return Best<br/>Path Found]
+    I --> K[Return<br/>Solution Path]
+
+    style A fill:#1a1a2e,stroke:#00f3ff,color:#fff
+    style K fill:#16213e,stroke:#39ff14,color:#fff
+    style J fill:#16213e,stroke:#bc13fe,color:#fff
+```
+
 ## 2. Configuration Space (C-space)
 
 Understanding the robot's environment is crucial for motion planning, and the concept of Configuration Space (C-space) is central to this.
