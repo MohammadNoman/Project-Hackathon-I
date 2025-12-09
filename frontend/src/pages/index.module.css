@@ -1,23 +1,590 @@
 /**
- * CSS files with the .module.css suffix will be treated as CSS modules
- * and scoped locally.
+ * COMMAND CENTER - FUTURISTIC LANDING PAGE STYLES
  */
 
-.heroBanner {
-  padding: 4rem 0;
+/* ============================================
+   HERO SECTION
+   ============================================ */
+.heroSection {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: linear-gradient(135deg, #0a0a0f 0%, #12121a 50%, #0a0a0f 100%);
+}
+
+/* Animated grid background */
+.gridBackground {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background:
+    linear-gradient(rgba(0, 243, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 243, 255, 0.05) 1px, transparent 1px);
+  background-size: 60px 60px;
+  animation: gridMove 20s linear infinite;
+}
+
+@keyframes gridMove {
+  0% {
+    transform: perspective(500px) rotateX(60deg) translateY(0);
+  }
+  100% {
+    transform: perspective(500px) rotateX(60deg) translateY(60px);
+  }
+}
+
+/* Particle effect overlay */
+.particles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image:
+    radial-gradient(2px 2px at 20px 30px, rgba(0, 243, 255, 0.3), transparent),
+    radial-gradient(2px 2px at 40px 70px, rgba(188, 19, 254, 0.3), transparent),
+    radial-gradient(2px 2px at 50px 160px, rgba(0, 243, 255, 0.3), transparent),
+    radial-gradient(2px 2px at 90px 40px, rgba(188, 19, 254, 0.3), transparent),
+    radial-gradient(2px 2px at 130px 80px, rgba(0, 243, 255, 0.3), transparent),
+    radial-gradient(2px 2px at 160px 120px, rgba(188, 19, 254, 0.3), transparent);
+  background-repeat: repeat;
+  background-size: 200px 200px;
+  animation: particleFloat 10s ease-in-out infinite;
+}
+
+@keyframes particleFloat {
+  0%, 100% { opacity: 0.5; transform: translateY(0); }
+  50% { opacity: 1; transform: translateY(-20px); }
+}
+
+/* Glowing orbs */
+.orbCyan {
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(0, 243, 255, 0.15) 0%, transparent 70%);
+  top: -100px;
+  right: -100px;
+  animation: orbPulse 4s ease-in-out infinite;
+}
+
+.orbPurple {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(188, 19, 254, 0.15) 0%, transparent 70%);
+  bottom: -150px;
+  left: -150px;
+  animation: orbPulse 5s ease-in-out infinite reverse;
+}
+
+@keyframes orbPulse {
+  0%, 100% { transform: scale(1); opacity: 0.5; }
+  50% { transform: scale(1.1); opacity: 0.8; }
+}
+
+/* Hero content */
+.heroContent {
+  position: relative;
+  z-index: 10;
   text-align: center;
+  padding: 2rem;
+  max-width: 1000px;
+}
+
+/* Status bar */
+.statusBar {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-bottom: 2rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.85rem;
+}
+
+.statusIndicator {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #39ff14;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.statusDot {
+  width: 8px;
+  height: 8px;
+  background: #39ff14;
+  border-radius: 50%;
+  animation: statusBlink 2s ease-in-out infinite;
+}
+
+@keyframes statusBlink {
+  0%, 100% { opacity: 1; box-shadow: 0 0 10px #39ff14; }
+  50% { opacity: 0.5; box-shadow: 0 0 5px #39ff14; }
+}
+
+.timestamp {
+  color: #a0a0b0;
+}
+
+/* Title with glitch effect */
+.titleContainer {
+  margin-bottom: 1.5rem;
+}
+
+.titleGlitch {
+  font-family: 'Orbitron', sans-serif;
+  font-size: clamp(2.5rem, 8vw, 5rem);
+  font-weight: 900;
+  background: linear-gradient(135deg, #00f3ff 0%, #bc13fe 50%, #00f3ff 100%);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradientShift 3s ease infinite;
+  position: relative;
+  letter-spacing: 4px;
+}
+
+.titleGlitch::before,
+.titleGlitch::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #00f3ff 0%, #bc13fe 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.titleGlitch::before {
+  animation: glitch1 2s infinite;
+  clip-path: polygon(0 0, 100% 0, 100% 45%, 0 45%);
+}
+
+.titleGlitch::after {
+  animation: glitch2 2s infinite;
+  clip-path: polygon(0 55%, 100% 55%, 100% 100%, 0 100%);
+}
+
+@keyframes glitch1 {
+  0%, 90%, 100% { transform: translate(0); }
+  92% { transform: translate(-2px, 2px); }
+  94% { transform: translate(2px, -2px); }
+}
+
+@keyframes glitch2 {
+  0%, 90%, 100% { transform: translate(0); }
+  91% { transform: translate(2px, 2px); }
+  93% { transform: translate(-2px, -2px); }
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.subtitleGlitch {
+  font-family: 'Orbitron', sans-serif;
+  font-size: clamp(1.2rem, 4vw, 2rem);
+  font-weight: 600;
+  color: #bc13fe;
+  letter-spacing: 6px;
+  text-shadow: 0 0 20px rgba(188, 19, 254, 0.5);
+}
+
+.tagline {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.2rem;
+  color: #a0a0b0;
+  max-width: 600px;
+  margin: 0 auto 2.5rem;
+  line-height: 1.6;
+}
+
+/* CTA Buttons */
+.ctaContainer {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 3rem;
+}
+
+.ctaPrimary,
+.ctaSecondary {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem 2rem;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  letter-spacing: 1px;
+}
+
+.ctaPrimary {
+  background: linear-gradient(135deg, #00f3ff, #bc13fe);
+  color: #0a0a0f;
+  box-shadow: 0 0 30px rgba(0, 243, 255, 0.4);
+}
+
+.ctaPrimary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 50px rgba(0, 243, 255, 0.6);
+  color: #0a0a0f;
+}
+
+.ctaSecondary {
+  background: transparent;
+  color: #00f3ff;
+  border: 2px solid #00f3ff;
+}
+
+.ctaSecondary:hover {
+  background: rgba(0, 243, 255, 0.1);
+  box-shadow: 0 0 30px rgba(0, 243, 255, 0.3);
+  transform: translateY(-3px);
+  color: #00f3ff;
+}
+
+.ctaIcon {
+  font-size: 1.2rem;
+}
+
+/* Stats */
+.statsContainer {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.statCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.5rem;
+  background: rgba(18, 18, 26, 0.8);
+  border: 1px solid rgba(0, 243, 255, 0.2);
+  border-radius: 12px;
+  min-width: 120px;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+}
+
+.statCard:hover {
+  border-color: #00f3ff;
+  box-shadow: 0 0 20px rgba(0, 243, 255, 0.3);
+  transform: translateY(-5px);
+}
+
+.statIcon {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.statValue {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #00f3ff;
+  text-shadow: 0 0 10px rgba(0, 243, 255, 0.5);
+}
+
+.statLabel {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.8rem;
+  color: #a0a0b0;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* ============================================
+   MAIN CONTENT
+   ============================================ */
+.mainContent {
+  background: #0a0a0f;
+  position: relative;
+}
+
+/* ============================================
+   MODULES SECTION
+   ============================================ */
+.modulesSection {
+  padding: 5rem 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.sectionHeader {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.sectionTitle {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 1rem;
+  letter-spacing: 2px;
+}
+
+.titleAccent {
+  color: #00f3ff;
+  margin-right: 0.5rem;
+}
+
+.sectionSubtitle {
+  font-family: 'Inter', sans-serif;
+  color: #a0a0b0;
+  font-size: 1.1rem;
+}
+
+/* Module Grid */
+.moduleGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.moduleCard {
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem;
+  background: rgba(18, 18, 26, 0.8);
+  border: 1px solid rgba(0, 243, 255, 0.15);
+  border-radius: 12px;
+  text-decoration: none;
+  transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
 }
 
-@media screen and (max-width: 996px) {
-  .heroBanner {
-    padding: 2rem;
-  }
+.moduleCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #00f3ff, #bc13fe);
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
 }
 
-.buttons {
+.moduleCard:hover {
+  border-color: #00f3ff;
+  box-shadow: 0 0 30px rgba(0, 243, 255, 0.2);
+  transform: translateY(-5px);
+}
+
+.moduleCard:hover::before {
+  transform: scaleX(1);
+}
+
+.moduleHeader {
   display: flex;
+  justify-content: space-between;
   align-items: center;
+  margin-bottom: 1rem;
+}
+
+.moduleId {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.8rem;
+  color: #bc13fe;
+  background: rgba(188, 19, 254, 0.1);
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+}
+
+.moduleStatus {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  text-transform: uppercase;
+}
+
+.online {
+  color: #39ff14;
+  background: rgba(57, 255, 20, 0.1);
+  border: 1px solid rgba(57, 255, 20, 0.3);
+}
+
+.moduleIcon {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.moduleTitle {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin: 0 0 1rem 0;
+  flex-grow: 1;
+}
+
+.moduleArrow {
+  font-size: 1.5rem;
+  color: #00f3ff;
+  opacity: 0;
+  transform: translateX(-10px);
+  transition: all 0.3s ease;
+}
+
+.moduleCard:hover .moduleArrow {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* ============================================
+   FEATURES SECTION
+   ============================================ */
+.featuresSection {
+  padding: 5rem 2rem;
+  background: linear-gradient(180deg, #0a0a0f 0%, #12121a 100%);
+}
+
+.featuresGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.featureCard {
+  padding: 2rem;
+  background: rgba(18, 18, 26, 0.8);
+  border: 1px solid rgba(0, 243, 255, 0.15);
+  border-radius: 12px;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.featureCard:hover {
+  border-color: #bc13fe;
+  box-shadow: 0 0 30px rgba(188, 19, 254, 0.2);
+  transform: translateY(-5px);
+}
+
+.featureIcon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.featureCard h3 {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.1rem;
+  color: #00f3ff;
+  margin-bottom: 0.75rem;
+}
+
+.featureCard p {
+  font-family: 'Inter', sans-serif;
+  color: #a0a0b0;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ============================================
+   TECH SECTION
+   ============================================ */
+.techSection {
+  padding: 4rem 2rem;
+  background: #0a0a0f;
+}
+
+.techGrid {
+  display: flex;
   justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.techBadge {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.9rem;
+  padding: 0.75rem 1.5rem;
+  background: rgba(0, 243, 255, 0.1);
+  border: 1px solid rgba(0, 243, 255, 0.3);
+  border-radius: 20px;
+  color: #00f3ff;
+  transition: all 0.3s ease;
+}
+
+.techBadge:hover {
+  background: rgba(0, 243, 255, 0.2);
+  box-shadow: 0 0 20px rgba(0, 243, 255, 0.3);
+  transform: translateY(-3px);
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 768px) {
+  .heroSection {
+    min-height: auto;
+    padding: 4rem 1rem;
+  }
+
+  .titleGlitch {
+    font-size: 2rem;
+  }
+
+  .subtitleGlitch {
+    font-size: 1rem;
+  }
+
+  .statusBar {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .statsContainer {
+    gap: 1rem;
+  }
+
+  .statCard {
+    min-width: 100px;
+    padding: 1rem;
+  }
+
+  .ctaContainer {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .ctaPrimary,
+  .ctaSecondary {
+    width: 100%;
+    max-width: 300px;
+    justify-content: center;
+  }
+
+  .moduleGrid {
+    grid-template-columns: 1fr;
+  }
 }
