@@ -1,0 +1,199 @@
+.container {
+  max-width: 400px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+/* Form Card */
+.formCard {
+  background: var(--ifm-background-color);
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  border: 1px solid var(--ifm-color-emphasis-200);
+}
+
+/* Tabs */
+.tabs {
+  display: flex;
+  border-bottom: 1px solid var(--ifm-color-emphasis-200);
+}
+
+.tab {
+  flex: 1;
+  padding: 14px;
+  background: transparent;
+  border: none;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--ifm-color-emphasis-600);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.tab:hover {
+  background: var(--ifm-color-emphasis-100);
+}
+
+.activeTab {
+  color: var(--ifm-color-primary);
+  border-bottom: 2px solid var(--ifm-color-primary);
+  margin-bottom: -1px;
+}
+
+/* Error */
+.error {
+  margin: 16px;
+  padding: 12px;
+  background: var(--ifm-color-danger-lightest);
+  color: var(--ifm-color-danger-darkest);
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+/* Form */
+.form {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.field label {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--ifm-color-emphasis-700);
+}
+
+.field input,
+.field select {
+  padding: 10px 12px;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 8px;
+  font-size: 14px;
+  background: var(--ifm-background-color);
+  color: var(--ifm-color-content);
+  transition: border-color 0.2s;
+}
+
+.field input:focus,
+.field select:focus {
+  outline: none;
+  border-color: var(--ifm-color-primary);
+}
+
+.field input::placeholder {
+  color: var(--ifm-color-emphasis-500);
+}
+
+.field input:disabled,
+.field select:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Submit Button */
+.submitButton {
+  padding: 12px;
+  background: var(--ifm-color-primary);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s;
+  margin-top: 8px;
+}
+
+.submitButton:hover:not(:disabled) {
+  background: var(--ifm-color-primary-dark);
+}
+
+.submitButton:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Hint */
+.hint {
+  text-align: center;
+  font-size: 12px;
+  color: var(--ifm-color-emphasis-600);
+  padding: 0 20px 16px;
+  margin: 0;
+}
+
+/* Profile Card */
+.profileCard {
+  background: var(--ifm-background-color);
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  padding: 24px;
+  text-align: center;
+  border: 1px solid var(--ifm-color-emphasis-200);
+}
+
+.avatar {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: var(--ifm-color-primary);
+  color: white;
+  font-size: 28px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 16px;
+}
+
+.profileEmail {
+  font-size: 16px;
+  margin: 0 0 16px;
+  color: var(--ifm-color-content);
+}
+
+.backgroundInfo {
+  font-size: 13px;
+  color: var(--ifm-color-emphasis-700);
+  margin-bottom: 8px;
+  text-align: left;
+  padding: 8px 12px;
+  background: var(--ifm-color-emphasis-100);
+  border-radius: 6px;
+}
+
+.signoutButton {
+  width: 100%;
+  padding: 10px;
+  margin-top: 16px;
+  background: transparent;
+  color: var(--ifm-color-danger);
+  border: 1px solid var(--ifm-color-danger);
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.signoutButton:hover {
+  background: var(--ifm-color-danger);
+  color: white;
+}
+
+/* Dark mode */
+[data-theme='dark'] .formCard,
+[data-theme='dark'] .profileCard {
+  border-color: var(--ifm-color-emphasis-300);
+}
+
+[data-theme='dark'] .error {
+  background: rgba(var(--ifm-color-danger-rgb), 0.15);
+}
