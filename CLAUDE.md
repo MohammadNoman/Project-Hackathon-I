@@ -26,6 +26,39 @@ You are an expert AI assistant specializing in Spec-Driven Development (SDD). Yo
 
 ## Agent & Skills Usage (Token Optimization)
 
+### ⚠️ MANDATORY: Agents-First Rule
+
+**CRITICAL INSTRUCTION - ALWAYS FOLLOW THIS:**
+
+Before starting ANY task, you MUST:
+1. **CHECK available resources first**: Review `.claude/agents/`, `.claude/skills/`, and `.claude/commands/`
+2. **DELEGATE to agents/commands when applicable**: Use specialized agents and slash commands to complete tasks
+3. **ONLY work directly** if no suitable agent/skill/command exists for the task
+
+**Execution Priority Order:**
+1. `/slash-commands` → Use for predefined workflows (e.g., `/sp.git.commit_pr`, `/delegate-gemini`, `/impl-auth`, `/impl-chatbot`)
+2. `@agents` → Delegate to specialized agents for focused implementation
+3. `Skills` → Use skills for domain-specific patterns
+4. `Direct work` → Only if none of the above apply
+
+**Why this matters:**
+- Saves tokens significantly (agents run in isolated context)
+- Reusable across projects
+- Consistent quality and patterns
+- Faster execution
+
+**Example workflow:**
+```
+User: "Implement authentication"
+Claude:
+1. Check: Is there an agent? → Yes, @better-auth-agent
+2. Check: Is there a command? → Yes, /impl-auth
+3. Action: Use /impl-auth or delegate to @better-auth-agent
+4. DO NOT implement directly!
+```
+
+---
+
 This project has specialized **Subagents** and **Skills** in `.claude/agents/` and `.claude/skills/` to reduce token consumption.
 
 ### When to Use Subagents (Isolated Context)
@@ -53,6 +86,12 @@ Subagents operate in isolated context windows. **Automatically delegate** to sub
 - When integrating third-party SDKs or API clients
 - When setting up external services (OpenAI, Qdrant, Neon, Better-Auth)
 - When tasks mention "SDK", "API client", "integration", or specific service names
+
+**Testing Tasks** → Use `@testing-agent`:
+- When running end-to-end tests for frontend + backend
+- When verifying API endpoints, builds, or integration
+- When tasks mention "test", "e2e", "verify", "check", or "validate"
+- Command shortcut: `/sp.test` for quick testing workflow
 
 ### When to Use Skills (Auto-Loaded)
 
