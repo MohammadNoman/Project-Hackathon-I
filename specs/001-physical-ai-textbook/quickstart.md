@@ -1,87 +1,214 @@
-# Quickstart Guide: AI-Native Textbook for Physical AI & Humanoid Robotics Course
+# Quickstart Guide
 
-**Feature**: `001-physical-ai-textbook` | **Date**: 2025-12-02 | **Spec**: [specs/001-physical-ai-textbook/spec.md](specs/001-physical-ai-textbook/spec.md)
+## Physical AI & Humanoid Robotics Textbook
 
-## Overview
+Get the project running in under 5 minutes!
 
-This guide provides a quick overview and setup instructions to get the AI-Native Textbook project running locally and to interact with its core functionalities.
+---
 
-## Local Development Setup
+## Prerequisites
 
-### Prerequisites
+| Tool | Version | Download |
+|------|---------|----------|
+| Node.js | 18+ | [nodejs.org](https://nodejs.org/) |
+| Python | 3.9+ | [python.org](https://python.org/) |
+| Git | Latest | [git-scm.com](https://git-scm.com/) |
 
-Before you begin, ensure you have the following installed:
+---
 
-*   **Git**
-*   **Node.js** (v18 or higher) and **npm**
-*   **Python** (3.9 or higher) and **pip**
-*   **Docker Desktop** (optional, for local Neon/Qdrant if not using cloud services)
-*   **Claude Code CLI** (`npm install -g @anthropic-ai/claude-code-cli`)
-*   **Spec-Kit Plus CLI** (`npm install -g spec-kit-plus-cli`)
-
-### 1. Clone the Repository
+## Step 1: Clone & Enter Project
 
 ```bash
-git clone <your-repository-url>
-cd <your-repository-name>
+git clone https://github.com/MohammadNoman/Project-Hackathon-I.git
+cd Project-Hackathon-I
 ```
 
-### 2. Frontend (Docusaurus) Setup
+---
 
-Navigate to the Docusaurus project directory (e.g., `001-physical-ai-textbook-docs` if you followed the plan, or your project root if integrated).
+## Step 2: Run Frontend (Textbook)
 
 ```bash
-# Assuming Docusaurus is in the root or a subdirectory named '001-physical-ai-textbook-docs'
-cd 001-physical-ai-textbook-docs # or your Docusaurus root
+cd frontend
 npm install
 npm start
 ```
 
-This will start the Docusaurus development server, typically accessible at `http://localhost:3000`.
+**Open:** http://localhost:3000
 
-### 3. Backend (FastAPI) Setup
+You should see the interactive textbook with 13 modules!
 
-Navigate to the `backend/` directory.
+---
+
+## Step 3: Run Backend (API)
+
+Open a **new terminal**:
 
 ```bash
 cd backend
 pip install -r requirements.txt
-# Create a .env file based on .env.example and fill in your API keys and database credentials
-# Example .env content:
-# OPENAI_API_KEY=your_openai_key
-# CLAUDE_API_KEY=your_claude_key
-# BETTER_AUTH_API_KEY=your_better_auth_key
-# NEON_DATABASE_URL=your_neon_postgres_connection_string
-# QDRANT_HOST=your_qdrant_host
-# QDRANT_API_KEY=your_qdrant_api_key
+```
 
-# Run the FastAPI application
+### Configure Environment
+
+Create `backend/.env`:
+
+```env
+# Required for RAG chatbot
+OPENAI_API_KEY=sk-your-openai-key
+QDRANT_HOST=your-qdrant-cluster.qdrant.io
+QDRANT_API_KEY=your-qdrant-api-key
+
+# Required for auth
+BETTER_AUTH_SECRET=your-secret-key-min-32-chars
+
+# Optional
+DEBUG=true
+ENVIRONMENT=development
+```
+
+### Start Server
+
+```bash
 uvicorn app.main:app --reload
 ```
 
-This will start the FastAPI development server, typically accessible at `http://localhost:8000`.
+**API Docs:** http://localhost:8000/docs
 
-### 4. Interacting with the RAG Chatbot (Postman/cURL Example)
+---
 
-Once the FastAPI backend is running, you can test the chatbot API.
+## Step 4: Test the Chatbot
 
-**Endpoint**: `POST http://localhost:8000/api/chatbot/query`
-**Headers**: `Content-Type: application/json`
+### Option A: Use the UI
+1. Go to http://localhost:3000
+2. Click the chat button (bottom-right)
+3. Ask: "What is ROS2?"
 
-**Body Example**:
-
-```json
-{
-  "query_text": "What are the main components of ROS 2?"
-}
+### Option B: Use cURL
+```bash
+curl -X POST http://localhost:8000/api/chatbot/query \
+  -H "Content-Type: application/json" \
+  -d '{"query": "What is ROS2?"}'
 ```
 
-## Deployment
+### Option C: Use the API Docs
+1. Go to http://localhost:8000/docs
+2. Find `POST /api/chatbot/query`
+3. Click "Try it out"
+4. Enter a query and execute
 
-### GitHub Pages (Docusaurus)
+---
 
-Configure your GitHub Actions workflow (e.g., `.github/workflows/deploy.yml`) to build and deploy your Docusaurus site to GitHub Pages on pushes to `main` or `master` branch. Refer to Docusaurus official documentation for detailed steps.
+## Step 5: Test Authentication
 
-### FastAPI Backend
+### Sign Up
+```bash
+curl -X POST http://localhost:8000/api/auth/signup \
+  -H "Content-Type: application/json" \
+  -d '{
+    "email": "test@example.com",
+    "password": "password123",
+    "software_background": "intermediate",
+    "hardware_background": "beginner"
+  }'
+```
 
-Deployment strategies for the FastAPI backend depend on your chosen cloud provider (e.g., Vercel, AWS Lambda, Render). Ensure your deployment environment has Python 3.9+, installs `requirements.txt`, and securely configures environment variables.
+### Sign In
+```bash
+curl -X POST http://localhost:8000/api/auth/signin \
+  -H "Content-Type: application/json" \
+  -d '{
+    "email": "test@example.com",
+    "password": "password123"
+  }'
+```
+
+---
+
+## Project Structure Overview
+
+```
+Project-Hackathon-I/
+├── frontend/           # Docusaurus textbook
+│   ├── docs/           # 13 course modules
+│   ├── src/components/ # ChatbotWidget, AuthForms
+│   └── package.json
+├── backend/            # FastAPI server
+│   ├── app/
+│   │   ├── api/        # Endpoints (chatbot, auth)
+│   │   ├── core/       # RAG service, config
+│   │   └── models/     # Pydantic schemas
+│   └── requirements.txt
+└── scripts/            # Utility scripts
+```
+
+---
+
+## Common Issues
+
+### "Module not found" in frontend
+```bash
+cd frontend
+rm -rf node_modules
+npm install
+```
+
+### "No module named 'app'" in backend
+```bash
+cd backend
+pip install -r requirements.txt
+# Make sure you're in the backend directory when running uvicorn
+```
+
+### Chatbot returns error
+- Check that `OPENAI_API_KEY` is set in `.env`
+- Check that Qdrant is accessible
+- Run `python scripts/index_content.py` to index content
+
+### Port already in use
+```bash
+# Frontend (change port)
+npm start -- --port 3001
+
+# Backend (change port)
+uvicorn app.main:app --reload --port 8001
+```
+
+---
+
+## API Quick Reference
+
+| Endpoint | Method | Description |
+|----------|--------|-------------|
+| `/api/chatbot/query` | POST | Ask the RAG chatbot |
+| `/api/chatbot/health` | GET | Check chatbot service |
+| `/api/auth/signup` | POST | Register new user |
+| `/api/auth/signin` | POST | Login existing user |
+| `/api/auth/me` | GET | Get current user |
+| `/health` | GET | Check API health |
+
+---
+
+## Next Steps
+
+1. **Explore the textbook** - Browse all 13 modules
+2. **Try the chatbot** - Ask questions about robotics
+3. **Select text** - Highlight text and ask contextual questions
+4. **Create an account** - Test the authentication flow
+5. **Check API docs** - Explore all endpoints at `/docs`
+
+---
+
+## Live Demo
+
+**Textbook:** https://mohammadnoman.github.io/Project-Hackathon-I/
+
+---
+
+## Need Help?
+
+- **Issues:** [GitHub Issues](https://github.com/MohammadNoman/Project-Hackathon-I/issues)
+- **Docs:** Check `specs/` folder for detailed specifications
+
+---
+
+Happy Learning!
