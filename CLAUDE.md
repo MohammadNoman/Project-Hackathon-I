@@ -93,6 +93,38 @@ Subagents operate in isolated context windows. **Automatically delegate** to sub
 - When tasks mention "test", "e2e", "verify", "check", or "validate"
 - Command shortcut: `/sp.test` for quick testing workflow
 
+**Content & Demo Tasks** → Use `@content-agent`:
+- When creating demo scripts, video storyboards, or presentation materials
+- When writing documentation, README, or marketing copy
+- When tasks mention "demo", "script", "video", "documentation", or "content"
+- Command shortcut: `/sp.demo` for demo preparation workflow
+
+### Quick Reference: All Available Resources
+
+**Agents (`.claude/agents/`):**
+| Agent | Use For | Trigger Keywords |
+|-------|---------|------------------|
+| `@better-auth-agent` | Authentication | auth, signup, signin, login |
+| `@chatkit-agent` | RAG Chatbot | chatbot, RAG, embedding, Qdrant |
+| `@nextjs-agent` | Frontend/React | React, component, UI, frontend |
+| `@sdk-agent` | SDK Integration | SDK, API client, integration |
+| `@testing-agent` | E2E Testing | test, verify, check, validate |
+| `@content-agent` | Content/Demos | demo, script, docs, content |
+
+**Commands (`.claude/commands/`):**
+| Command | Use For |
+|---------|---------|
+| `/sp.test` | Run end-to-end tests |
+| `/sp.demo` | Generate demo materials |
+| `/sp.git.commit_pr` | Git commit and PR workflow |
+| `/impl-auth` | Implement authentication |
+| `/impl-chatbot` | Implement RAG chatbot |
+| `/delegate-gemini` | Delegate to Gemini CLI |
+| `/delegate-qwen` | Delegate to Qwen CLI |
+| `/sp.plan` | Create implementation plan |
+| `/sp.tasks` | Generate task list |
+| `/sp.analyze` | Cross-artifact analysis |
+
 ### When to Use Skills (Auto-Loaded)
 
 Skills auto-load when relevant context is detected. Reference these patterns:
