@@ -1,0 +1,493 @@
+.container {
+  display: inline-block;
+}
+
+/* Translate Button - Futuristic Neon Purple Theme (matching #bc13fe) */
+.translateButton {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  background: linear-gradient(135deg, #bc13fe 0%, #8e10c9 100%);
+  color: #fff;
+  border: 2px solid #bc13fe;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 15px rgba(188, 19, 254, 0.4), 0 4px 8px rgba(0, 0, 0, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.translateButton::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    45deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transform: rotate(45deg);
+  transition: all 0.5s ease;
+  opacity: 0;
+}
+
+.translateButton:hover::before {
+  opacity: 1;
+  animation: shine 1.5s infinite;
+}
+
+.translateButton:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 0 25px rgba(188, 19, 254, 0.7), 0 6px 12px rgba(0, 0, 0, 0.3);
+  border-color: #d642ff;
+}
+
+.translateButton:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.translateButton:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+@keyframes shine {
+  0% {
+    left: -50%;
+  }
+  100% {
+    left: 150%;
+  }
+}
+
+/* Urdu Text Styling */
+.urduText {
+  font-family: 'Noto Nastaliq Urdu', 'Jameel Noori Nastaleeq', 'Nafees Nastaleeq', serif;
+  font-size: 16px;
+  line-height: 2;
+  letter-spacing: 0;
+}
+
+/* RTL Text Support */
+.rtlText {
+  direction: rtl;
+  text-align: right;
+  unicode-bidi: embed;
+}
+
+/* Error Banner */
+.errorBanner {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: rgba(255, 59, 48, 0.95);
+  color: #fff;
+  padding: 12px 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(255, 59, 48, 0.4);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  z-index: 10001;
+  animation: slideInRight 0.3s ease-out;
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.closeError {
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 0;
+  line-height: 1;
+}
+
+/* Modal Overlay */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Result Content */
+.resultContent {
+  background: var(--ifm-background-color);
+  border-radius: 16px;
+  width: 90%;
+  max-width: 900px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 0 40px rgba(188, 19, 254, 0.5), 0 8px 32px rgba(0, 0, 0, 0.3);
+  border: 2px solid #bc13fe;
+  animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Modal Header */
+.modalHeader {
+  padding: 20px 24px;
+  border-bottom: 2px solid rgba(188, 19, 254, 0.3);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(90deg, rgba(188, 19, 254, 0.15) 0%, transparent 100%);
+}
+
+.modalHeader h3 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 700;
+  color: #bc13fe;
+  text-shadow: 0 0 10px rgba(188, 19, 254, 0.5);
+}
+
+.closeButton {
+  background: transparent;
+  border: none;
+  color: var(--ifm-color-emphasis-600);
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 4px;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.closeButton:hover {
+  background: rgba(188, 19, 254, 0.1);
+  color: #bc13fe;
+}
+
+/* Result Body */
+.resultBody {
+  padding: 24px;
+}
+
+/* Info Card */
+.infoCard {
+  background: linear-gradient(135deg, rgba(188, 19, 254, 0.12) 0%, rgba(142, 16, 201, 0.06) 100%);
+  border: 2px solid rgba(188, 19, 254, 0.3);
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 20px;
+  box-shadow: 0 0 20px rgba(188, 19, 254, 0.2);
+}
+
+.infoCard h4 {
+  margin: 0 0 12px 0;
+  font-size: 16px;
+  color: #bc13fe;
+  text-shadow: 0 0 8px rgba(188, 19, 254, 0.4);
+}
+
+.languageInfo {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+}
+
+.infoItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.infoLabel {
+  font-size: 14px;
+  color: var(--ifm-color-emphasis-700);
+  font-weight: 600;
+}
+
+.languageBadge {
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  background: linear-gradient(135deg, #bc13fe 0%, #8e10c9 100%);
+  color: #fff;
+  border: 1px solid #bc13fe;
+  box-shadow: 0 0 10px rgba(188, 19, 254, 0.4);
+}
+
+.stats {
+  font-size: 12px;
+  color: var(--ifm-color-emphasis-600);
+  margin-top: 8px;
+}
+
+/* Content Display */
+.content {
+  background: var(--ifm-color-emphasis-50);
+  border: 1px solid var(--ifm-color-emphasis-200);
+  border-radius: 12px;
+  padding: 20px;
+}
+
+.contentLabel {
+  font-size: 14px;
+  font-weight: 700;
+  color: #bc13fe;
+  margin-bottom: 16px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.contentText {
+  font-size: 15px;
+  line-height: 1.9;
+  color: var(--ifm-color-content);
+}
+
+/* Markdown-style elements */
+.heading1 {
+  font-size: 28px;
+  font-weight: 700;
+  margin: 24px 0 16px 0;
+  color: var(--ifm-heading-color);
+  border-bottom: 2px solid rgba(188, 19, 254, 0.3);
+  padding-bottom: 8px;
+}
+
+.heading2 {
+  font-size: 22px;
+  font-weight: 600;
+  margin: 20px 0 12px 0;
+  color: var(--ifm-heading-color);
+}
+
+.heading3 {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 16px 0 10px 0;
+  color: var(--ifm-heading-color);
+}
+
+.paragraph {
+  margin: 0 0 14px 0;
+  line-height: 1.8;
+}
+
+.paragraph:last-child {
+  margin-bottom: 0;
+}
+
+.list {
+  margin: 12px 0;
+  padding-left: 24px;
+}
+
+.rtlText .list {
+  padding-left: 0;
+  padding-right: 24px;
+}
+
+.list li {
+  margin-bottom: 8px;
+  line-height: 1.7;
+}
+
+.codeBlock {
+  background: var(--ifm-code-background);
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 8px;
+  padding: 16px;
+  margin: 16px 0;
+  overflow-x: auto;
+  direction: ltr;
+  text-align: left;
+}
+
+.codeBlock code {
+  font-family: var(--ifm-font-family-monospace);
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--ifm-code-color);
+}
+
+/* RTL-specific styling for Urdu/Arabic */
+.rtlText .heading1,
+.rtlText .heading2,
+.rtlText .heading3,
+.rtlText .paragraph {
+  direction: rtl;
+  text-align: right;
+  font-family: 'Noto Nastaliq Urdu', 'Jameel Noori Nastaleeq', 'Nafees Nastaleeq', serif;
+  line-height: 2.2;
+}
+
+/* Bold and emphasis in RTL text */
+.rtlText strong {
+  font-weight: 700;
+}
+
+.rtlText em {
+  font-style: italic;
+}
+
+/* Modal Footer */
+.modalFooter {
+  padding: 16px 24px;
+  border-top: 2px solid rgba(188, 19, 254, 0.3);
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  background: linear-gradient(90deg, transparent 0%, rgba(188, 19, 254, 0.05) 100%);
+}
+
+.closeButtonFooter {
+  padding: 10px 24px;
+  background: linear-gradient(135deg, #bc13fe 0%, #8e10c9 100%);
+  color: #fff;
+  border: 2px solid #bc13fe;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s;
+  box-shadow: 0 0 15px rgba(188, 19, 254, 0.4);
+}
+
+.closeButtonFooter:hover {
+  box-shadow: 0 0 25px rgba(188, 19, 254, 0.7);
+  transform: translateY(-1px);
+}
+
+.closeButtonFooter:active {
+  transform: translateY(0);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .resultContent {
+    width: 95%;
+    max-height: 95vh;
+  }
+
+  .resultBody {
+    padding: 16px;
+  }
+
+  .modalHeader {
+    padding: 16px;
+  }
+
+  .modalHeader h3 {
+    font-size: 18px;
+  }
+
+  .heading1 {
+    font-size: 24px;
+  }
+
+  .heading2 {
+    font-size: 20px;
+  }
+
+  .heading3 {
+    font-size: 16px;
+  }
+
+  .errorBanner {
+    top: 10px;
+    right: 10px;
+    left: 10px;
+    width: auto;
+  }
+}
+
+/* Dark Mode */
+[data-theme='dark'] .resultContent {
+  background: #1a1a1a;
+  border-color: #bc13fe;
+}
+
+[data-theme='dark'] .content {
+  background: #2a2a2a;
+  border-color: #444;
+}
+
+[data-theme='dark'] .infoCard {
+  background: linear-gradient(135deg, rgba(188, 19, 254, 0.2) 0%, rgba(142, 16, 201, 0.1) 100%);
+  border-color: rgba(188, 19, 254, 0.5);
+}
+
+[data-theme='dark'] .codeBlock {
+  background: #1e1e1e;
+  border-color: #444;
+}
+
+/* Custom Scrollbar for Modal */
+.resultContent::-webkit-scrollbar {
+  width: 8px;
+}
+
+.resultContent::-webkit-scrollbar-track {
+  background: rgba(188, 19, 254, 0.1);
+  border-radius: 8px;
+}
+
+.resultContent::-webkit-scrollbar-thumb {
+  background: rgba(188, 19, 254, 0.5);
+  border-radius: 8px;
+}
+
+.resultContent::-webkit-scrollbar-thumb:hover {
+  background: rgba(188, 19, 254, 0.7);
+}
+
+/* Loading State for Button */
+.translateButton:disabled {
+  opacity: 0.7;
+  cursor: wait;
+}

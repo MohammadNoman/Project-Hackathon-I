@@ -61,6 +61,53 @@ class TokenResponse(BaseModel):
     expires_in: int
 
 
+# Personalization Schemas
+class PersonalizeRequest(BaseModel):
+    """Request model for content personalization."""
+    user_id: Optional[str] = Field(None, description="User ID for personalization tracking")
+    software_background: str = Field("", description="User's software/programming background")
+    hardware_background: str = Field("", description="User's hardware/robotics background")
+
+
+class PersonalizationParams(BaseModel):
+    """Parameters used for content personalization."""
+    software_level: str = Field(..., description="Detected software expertise: beginner/intermediate/advanced")
+    hardware_level: str = Field(..., description="Detected hardware expertise: beginner/intermediate/advanced")
+    software_background: str = Field(..., description="Original software background description")
+    hardware_background: str = Field(..., description="Original hardware background description")
+
+
+class PersonalizeResponse(BaseModel):
+    """Response model for personalized content."""
+    personalized_content: str = Field(..., description="Content adapted to user's background")
+    personalization_params: PersonalizationParams
+    chapter_id: str = Field(..., description="Chapter identifier")
+    user_id: Optional[str] = Field(None, description="User ID if provided")
+    tokens_used: Optional[int] = Field(None, description="OpenAI tokens consumed")
+    processing_time_ms: Optional[float] = Field(None, description="Processing time in milliseconds")
+
+
+# Translation Schemas
+class TranslateRequest(BaseModel):
+    """Request model for content translation."""
+    target_language: str = Field("ur", description="Target language code (ISO 639-1, default: 'ur' for Urdu)")
+    content: Optional[str] = Field(None, description="Optional content to translate (if not provided, fetches chapter)")
+    user_id: Optional[str] = Field(None, description="User ID for translation tracking")
+
+
+class TranslateResponse(BaseModel):
+    """Response model for translated content."""
+    translated_content: str = Field(..., description="Content translated to target language")
+    target_language: str = Field(..., description="Target language code")
+    language_name: str = Field(..., description="Full name of target language")
+    chapter_id: str = Field(..., description="Chapter identifier")
+    user_id: Optional[str] = Field(None, description="User ID if provided")
+    tokens_used: Optional[int] = Field(None, description="OpenAI tokens consumed")
+    processing_time_ms: Optional[float] = Field(None, description="Processing time in milliseconds")
+    original_length: Optional[int] = Field(None, description="Length of original content")
+    translated_length: Optional[int] = Field(None, description="Length of translated content")
+
+
 # Health Check
 class HealthCheckResponse(BaseModel):
     """Response model for health check endpoint."""

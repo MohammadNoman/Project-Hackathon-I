@@ -5,7 +5,7 @@ from fastapi.middleware.cors import CORSMiddleware
 import logging
 
 from app.core.config import settings
-from app.api import chatbot, auth
+from app.api import chatbot, auth, personalization, translation
 from app.models.schemas import HealthCheckResponse
 
 # Configure logging
@@ -40,6 +40,8 @@ app.add_middleware(
 # Include routers
 app.include_router(chatbot.router)
 app.include_router(auth.router)
+app.include_router(personalization.router)
+app.include_router(translation.router)
 
 
 @app.get("/", response_model=HealthCheckResponse)
