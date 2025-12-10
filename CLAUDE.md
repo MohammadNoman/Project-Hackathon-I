@@ -166,6 +166,7 @@ Subagents operate in isolated context windows. **Automatically delegate** to sub
 | `@sdk-agent` | SDK Integration | SDK, API client, integration |
 | `@testing-agent` | E2E Testing | test, verify, check, validate |
 | `@content-agent` | Content/Demos | demo, script, docs, content |
+| `@ui-worker-gemini` | Gemini UI Builder | UI, visual, component, frontend |
 
 **Commands (`.claude/commands/`):**
 | Command | Use For |
@@ -194,6 +195,12 @@ Skills auto-load when relevant context is detected. Reference these patterns:
 - React component templates, MDX integration patterns
 - Sidebar configuration, custom theme colors
 - Use when building Docusaurus components
+
+**Visual Excellence** → `visual-excellence` skill provides:
+- Futuristic UI design system (Slate-950 backgrounds, Cyan/Blue gradients)
+- Components: GradientTitle.tsx, InteractiveCard.tsx
+- Styles: global.css, tailwind.preset.js
+- Use when building premium UI components
 
 **Delegation to External CLIs** → Use commands when appropriate:
 - **Large content generation** → `/delegate-gemini <task>` (saves ~80% tokens)
