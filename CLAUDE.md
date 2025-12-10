@@ -26,35 +26,91 @@ You are an expert AI assistant specializing in Spec-Driven Development (SDD). Yo
 
 ## Agent & Skills Usage (Token Optimization)
 
+### 🚨 CRITICAL: Gemini/Qwen Delegation First (SAVES 95% TOKENS!)
+
+**YOU ARE THE ARCHITECT, NOT THE BUILDER!**
+
+Claude tokens are expensive. Gemini/Qwen are FREE. Always delegate implementation to them.
+
+**MANDATORY EXECUTION ORDER:**
+
+```
+1. FIRST: Use dispatch.ps1 to delegate to Gemini/Qwen
+   .\reusable-intelligence\dispatch.ps1 -Agent <agent> -Task "<task>" -Skills <skills> -Execute
+
+2. SECOND: Review Gemini/Qwen output for errors
+
+3. THIRD: Only use Claude tokens for planning, review, and integration
+```
+
+**Token Savings:**
+| Task Type | Claude Direct | With Delegation | Savings |
+|-----------|---------------|-----------------|---------|
+| Full Implementation | ~50k tokens | ~2k tokens | **96%** |
+| Component Building | ~10k tokens | ~500 tokens | **95%** |
+| Content Generation | ~5k tokens | ~100 tokens | **98%** |
+
+### Dispatch Command Examples
+
+```powershell
+# Build a React component
+.\reusable-intelligence\dispatch.ps1 -Agent nextjs-agent -Task "Build PersonalizeButton" -Skills visual-excellence -Execute
+
+# Create content/docs
+.\reusable-intelligence\dispatch.ps1 -Agent content-agent -Task "Write demo script" -Execute
+
+# Run tests
+.\reusable-intelligence\dispatch.ps1 -Agent testing-agent -Task "E2E test the app" -Execute
+
+# Authentication
+.\reusable-intelligence\dispatch.ps1 -Agent better-auth-agent -Task "Implement signup" -Execute
+```
+
+### Available Agents (`reusable-intelligence/agents/`)
+
+| Agent | Use For | Dispatch Command |
+|-------|---------|------------------|
+| `nextjs-agent` | React/Frontend | `-Agent nextjs-agent` |
+| `better-auth-agent` | Authentication | `-Agent better-auth-agent` |
+| `chatkit-agent` | RAG Chatbot | `-Agent chatkit-agent` |
+| `content-agent` | Docs/Demos | `-Agent content-agent` |
+| `testing-agent` | E2E Testing | `-Agent testing-agent` |
+| `personalization-agent` | Personalization/i18n | `-Agent personalization-agent` |
+| `sdk-agent` | SDK Integration | `-Agent sdk-agent` |
+
+### Available Skills (`reusable-intelligence/skills/`)
+
+| Skill | Use For |
+|-------|---------|
+| `visual-excellence` | Futuristic UI/UX |
+| `docusaurus-patterns` | Docusaurus components |
+| `fastapi-patterns` | Backend API patterns |
+| `gemini-delegator` | Gemini prompting |
+| `qwen-delegator` | Qwen prompting |
+
+---
+
 ### ⚠️ MANDATORY: Agents-First Rule
 
 **CRITICAL INSTRUCTION - ALWAYS FOLLOW THIS:**
 
 Before starting ANY task, you MUST:
-1. **CHECK available resources first**: Review `.claude/agents/`, `.claude/skills/`, and `.claude/commands/`
-2. **DELEGATE to agents/commands when applicable**: Use specialized agents and slash commands to complete tasks
-3. **ONLY work directly** if no suitable agent/skill/command exists for the task
+1. **DELEGATE via dispatch.ps1**: `.\reusable-intelligence\dispatch.ps1 -Agent <agent> -Task "<task>" -Execute`
+2. **CHECK output**: Review Gemini/Qwen generated code
+3. **FIX if needed**: Only use Claude tokens to correct errors
+4. **INTEGRATE**: Place code in correct files
 
-**Execution Priority Order:**
-1. `/slash-commands` → Use for predefined workflows (e.g., `/sp.git.commit_pr`, `/delegate-gemini`, `/impl-auth`, `/impl-chatbot`)
-2. `@agents` → Delegate to specialized agents for focused implementation
-3. `Skills` → Use skills for domain-specific patterns
-4. `Direct work` → Only if none of the above apply
-
-**Why this matters:**
-- Saves tokens significantly (agents run in isolated context)
-- Reusable across projects
-- Consistent quality and patterns
-- Faster execution
+**NEVER write implementation code directly! Always delegate first.**
 
 **Example workflow:**
 ```
 User: "Implement authentication"
 Claude:
-1. Check: Is there an agent? → Yes, @better-auth-agent
-2. Check: Is there a command? → Yes, /impl-auth
-3. Action: Use /impl-auth or delegate to @better-auth-agent
-4. DO NOT implement directly!
+1. Output: "Run this command:"
+   .\reusable-intelligence\dispatch.ps1 -Agent better-auth-agent -Task "Implement signup/signin with JWT" -Skills fastapi-patterns -Execute
+2. Wait for user to run command
+3. Review output, fix any issues
+4. Integrate into project
 ```
 
 ---
