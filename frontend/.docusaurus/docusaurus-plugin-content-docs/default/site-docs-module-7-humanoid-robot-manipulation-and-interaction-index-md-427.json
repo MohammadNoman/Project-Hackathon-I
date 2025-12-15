@@ -1,0 +1,24 @@
+{
+  "id": "module7-humanoid-robot-manipulation-and-interaction/index",
+  "title": "Module 7: Humanoid Robot Manipulation and Interaction",
+  "description": "1. Introduction to Robot Manipulation",
+  "source": "@site/docs/module7-humanoid-robot-manipulation-and-interaction/index.md",
+  "sourceDirName": "module7-humanoid-robot-manipulation-and-interaction",
+  "slug": "/module7-humanoid-robot-manipulation-and-interaction/",
+  "permalink": "/Project-Hackathon-I/docs/module7-humanoid-robot-manipulation-and-interaction/",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/MohammadNoman/Project-Hackathon-I/tree/master/frontend/docs/module7-humanoid-robot-manipulation-and-interaction/index.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Module 6: Humanoid Robot Design and Locomotion",
+    "permalink": "/Project-Hackathon-I/docs/module6-humanoid-robot-design-and-locomotion/outline"
+  },
+  "next": {
+    "title": "Module 7: Humanoid Robot Manipulation and Interaction",
+    "permalink": "/Project-Hackathon-I/docs/module7-humanoid-robot-manipulation-and-interaction/outline"
+  }
+}

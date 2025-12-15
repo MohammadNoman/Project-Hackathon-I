@@ -1,0 +1,24 @@
+{
+  "id": "module10-robot-human-interaction/index",
+  "title": "Module 10: Robot-Human Interaction (HRI)",
+  "description": "10.1 Introduction to Human-Robot Interaction",
+  "source": "@site/docs/module10-robot-human-interaction/index.md",
+  "sourceDirName": "module10-robot-human-interaction",
+  "slug": "/module10-robot-human-interaction/",
+  "permalink": "/Project-Hackathon-I/docs/module10-robot-human-interaction/",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/MohammadNoman/Project-Hackathon-I/tree/master/frontend/docs/module10-robot-human-interaction/index.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Module 9: Simultaneous Localization and Mapping (SLAM)",
+    "permalink": "/Project-Hackathon-I/docs/module9-simultaneous-localization-and-mapping-slam/outline"
+  },
+  "next": {
+    "title": "Module 10: Robot-Human Interaction (HRI)",
+    "permalink": "/Project-Hackathon-I/docs/module10-robot-human-interaction/outline"
+  }
+}

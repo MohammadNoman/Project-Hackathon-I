@@ -1,0 +1,24 @@
+{
+  "id": "module12-advanced-topics-in-physical-ai/outline",
+  "title": "Module 12: Advanced Topics in Physical AI",
+  "description": "12.1 Deep Reinforcement Learning (DRL) for Complex Robotics",
+  "source": "@site/docs/module12-advanced-topics-in-physical-ai/outline.md",
+  "sourceDirName": "module12-advanced-topics-in-physical-ai",
+  "slug": "/module12-advanced-topics-in-physical-ai/outline",
+  "permalink": "/Project-Hackathon-I/docs/module12-advanced-topics-in-physical-ai/outline",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/MohammadNoman/Project-Hackathon-I/tree/master/frontend/docs/module12-advanced-topics-in-physical-ai/outline.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Module 12: Advanced Topics in Physical AI",
+    "permalink": "/Project-Hackathon-I/docs/module12-advanced-topics-in-physical-ai/"
+  },
+  "next": {
+    "title": "Module 13: Future of Humanoid Robotics and AI",
+    "permalink": "/Project-Hackathon-I/docs/module13-future-of-humanoid-robotics-and-ai/"
+  }
+}

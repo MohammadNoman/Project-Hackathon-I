@@ -1,0 +1,24 @@
+{
+  "id": "assessments/module8-assessments",
+  "title": "Module 8: Reinforcement Learning for Robotics - Assessments",
+  "description": "Quizzes/Formative Assessments",
+  "source": "@site/docs/assessments/module8-assessments.md",
+  "sourceDirName": "assessments",
+  "slug": "/assessments/module8-assessments",
+  "permalink": "/Project-Hackathon-I/docs/assessments/module8-assessments",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/MohammadNoman/Project-Hackathon-I/tree/master/frontend/docs/assessments/module8-assessments.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "module6-assessments",
+    "permalink": "/Project-Hackathon-I/docs/assessments/module6-assessments"
+  },
+  "next": {
+    "title": "Module 9: Simultaneous Localization and Mapping (SLAM) Assessments",
+    "permalink": "/Project-Hackathon-I/docs/assessments/module9-assessments"
+  }
+}

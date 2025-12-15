@@ -1,0 +1,24 @@
+{
+  "id": "assessments/module12-assessments",
+  "title": "Module 12: Advanced Topics in Physical AI - Assessments",
+  "description": "Section 12.1: Deep Reinforcement Learning (DRL) for Complex Robotics",
+  "source": "@site/docs/assessments/module12-assessments.md",
+  "sourceDirName": "assessments",
+  "slug": "/assessments/module12-assessments",
+  "permalink": "/Project-Hackathon-I/docs/assessments/module12-assessments",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/MohammadNoman/Project-Hackathon-I/tree/master/frontend/docs/assessments/module12-assessments.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Module 11: Robot Ethics and Safety - Assessment Ideas",
+    "permalink": "/Project-Hackathon-I/docs/assessments/module11-assessments"
+  },
+  "next": {
+    "title": "Module 13: Future of Humanoid Robotics and AI - Assessment Ideas",
+    "permalink": "/Project-Hackathon-I/docs/assessments/module13-assessments"
+  }
+}

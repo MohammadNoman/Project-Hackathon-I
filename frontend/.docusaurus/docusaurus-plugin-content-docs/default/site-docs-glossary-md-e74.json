@@ -1,0 +1,20 @@
+{
+  "id": "glossary",
+  "title": "glossary",
+  "description": "- Robotic Operating System (ROS 2): An open-source, meta-operating system for robots, providing a flexible framework for writing robot software and simplifying the creation of complex and robust robot behaviors.",
+  "source": "@site/docs/glossary.md",
+  "sourceDirName": ".",
+  "slug": "/glossary",
+  "permalink": "/Project-Hackathon-I/docs/glossary",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/MohammadNoman/Project-Hackathon-I/tree/master/frontend/docs/glossary.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Module 13: Future of Humanoid Robotics and AI - Assessment Ideas",
+    "permalink": "/Project-Hackathon-I/docs/assessments/module13-assessments"
+  }
+}

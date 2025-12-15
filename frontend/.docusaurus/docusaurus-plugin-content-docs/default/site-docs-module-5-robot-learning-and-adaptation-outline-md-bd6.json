@@ -1,0 +1,24 @@
+{
+  "id": "module5-robot-learning-and-adaptation/outline",
+  "title": "Module 5: Robot Learning and Adaptation",
+  "description": "1. Introduction to Robot Learning",
+  "source": "@site/docs/module5-robot-learning-and-adaptation/outline.md",
+  "sourceDirName": "module5-robot-learning-and-adaptation",
+  "slug": "/module5-robot-learning-and-adaptation/outline",
+  "permalink": "/Project-Hackathon-I/docs/module5-robot-learning-and-adaptation/outline",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/MohammadNoman/Project-Hackathon-I/tree/master/frontend/docs/module5-robot-learning-and-adaptation/outline.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Module 5: Robot Learning and Adaptation",
+    "permalink": "/Project-Hackathon-I/docs/module5-robot-learning-and-adaptation/"
+  },
+  "next": {
+    "title": "Module 6: Humanoid Robot Design and Locomotion",
+    "permalink": "/Project-Hackathon-I/docs/module6-humanoid-robot-design-and-locomotion/"
+  }
+}

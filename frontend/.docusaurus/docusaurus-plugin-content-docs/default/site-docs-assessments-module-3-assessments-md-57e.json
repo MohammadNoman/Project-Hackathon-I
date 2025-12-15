@@ -1,0 +1,24 @@
+{
+  "id": "assessments/module3-assessments",
+  "title": "module3-assessments",
+  "description": "Module 3: Robot Kinematics and Dynamics - Assessment Ideas",
+  "source": "@site/docs/assessments/module3-assessments.md",
+  "sourceDirName": "assessments",
+  "slug": "/assessments/module3-assessments",
+  "permalink": "/Project-Hackathon-I/docs/assessments/module3-assessments",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/MohammadNoman/Project-Hackathon-I/tree/master/frontend/docs/assessments/module3-assessments.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Module 2: Robot Sensing and Perception - Assessments",
+    "permalink": "/Project-Hackathon-I/docs/assessments/module2-assessments"
+  },
+  "next": {
+    "title": "Module 4: Robot Motion Planning and Control - Assessments",
+    "permalink": "/Project-Hackathon-I/docs/assessments/module4-assessments"
+  }
+}

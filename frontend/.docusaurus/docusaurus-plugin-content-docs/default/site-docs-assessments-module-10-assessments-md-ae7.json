@@ -1,0 +1,24 @@
+{
+  "id": "assessments/module10-assessments",
+  "title": "Module 10: Robot-Human Interaction (HRI) Assessments",
+  "description": "Quizzes/Short Answer Questions",
+  "source": "@site/docs/assessments/module10-assessments.md",
+  "sourceDirName": "assessments",
+  "slug": "/assessments/module10-assessments",
+  "permalink": "/Project-Hackathon-I/docs/assessments/module10-assessments",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/MohammadNoman/Project-Hackathon-I/tree/master/frontend/docs/assessments/module10-assessments.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Module 9: Simultaneous Localization and Mapping (SLAM) Assessments",
+    "permalink": "/Project-Hackathon-I/docs/assessments/module9-assessments"
+  },
+  "next": {
+    "title": "Module 11: Robot Ethics and Safety - Assessment Ideas",
+    "permalink": "/Project-Hackathon-I/docs/assessments/module11-assessments"
+  }
+}

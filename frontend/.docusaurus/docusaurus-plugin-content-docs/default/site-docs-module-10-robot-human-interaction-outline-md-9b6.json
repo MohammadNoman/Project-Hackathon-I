@@ -1,0 +1,24 @@
+{
+  "id": "module10-robot-human-interaction/outline",
+  "title": "Module 10: Robot-Human Interaction (HRI)",
+  "description": "10.1 Introduction to Human-Robot Interaction",
+  "source": "@site/docs/module10-robot-human-interaction/outline.md",
+  "sourceDirName": "module10-robot-human-interaction",
+  "slug": "/module10-robot-human-interaction/outline",
+  "permalink": "/Project-Hackathon-I/docs/module10-robot-human-interaction/outline",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/MohammadNoman/Project-Hackathon-I/tree/master/frontend/docs/module10-robot-human-interaction/outline.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Module 10: Robot-Human Interaction (HRI)",
+    "permalink": "/Project-Hackathon-I/docs/module10-robot-human-interaction/"
+  },
+  "next": {
+    "title": "Module 11: Robot Ethics and Safety",
+    "permalink": "/Project-Hackathon-I/docs/module11-robot-ethics-and-safety/"
+  }
+}

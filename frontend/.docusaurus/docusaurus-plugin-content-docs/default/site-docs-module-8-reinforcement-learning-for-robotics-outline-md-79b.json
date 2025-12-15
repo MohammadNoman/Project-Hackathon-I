@@ -1,0 +1,24 @@
+{
+  "id": "module8-reinforcement-learning-for-robotics/outline",
+  "title": "Module 8: Reinforcement Learning for Robotics",
+  "description": "1. Introduction to Reinforcement Learning (RL) in Robotics",
+  "source": "@site/docs/module8-reinforcement-learning-for-robotics/outline.md",
+  "sourceDirName": "module8-reinforcement-learning-for-robotics",
+  "slug": "/module8-reinforcement-learning-for-robotics/outline",
+  "permalink": "/Project-Hackathon-I/docs/module8-reinforcement-learning-for-robotics/outline",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/MohammadNoman/Project-Hackathon-I/tree/master/frontend/docs/module8-reinforcement-learning-for-robotics/outline.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Module 8: Reinforcement Learning for Robotics",
+    "permalink": "/Project-Hackathon-I/docs/module8-reinforcement-learning-for-robotics/"
+  },
+  "next": {
+    "title": "Module 9: Simultaneous Localization and Mapping (SLAM)",
+    "permalink": "/Project-Hackathon-I/docs/module9-simultaneous-localization-and-mapping-slam/"
+  }
+}

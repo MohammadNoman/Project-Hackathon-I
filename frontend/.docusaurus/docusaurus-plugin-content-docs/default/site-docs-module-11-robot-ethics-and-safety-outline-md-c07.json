@@ -1,0 +1,24 @@
+{
+  "id": "module11-robot-ethics-and-safety/outline",
+  "title": "Module 11: Robot Ethics and Safety",
+  "description": "11.1 Introduction to Robot Ethics",
+  "source": "@site/docs/module11-robot-ethics-and-safety/outline.md",
+  "sourceDirName": "module11-robot-ethics-and-safety",
+  "slug": "/module11-robot-ethics-and-safety/outline",
+  "permalink": "/Project-Hackathon-I/docs/module11-robot-ethics-and-safety/outline",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/MohammadNoman/Project-Hackathon-I/tree/master/frontend/docs/module11-robot-ethics-and-safety/outline.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Module 11: Robot Ethics and Safety",
+    "permalink": "/Project-Hackathon-I/docs/module11-robot-ethics-and-safety/"
+  },
+  "next": {
+    "title": "Module 12: Advanced Topics in Physical AI",
+    "permalink": "/Project-Hackathon-I/docs/module12-advanced-topics-in-physical-ai/"
+  }
+}

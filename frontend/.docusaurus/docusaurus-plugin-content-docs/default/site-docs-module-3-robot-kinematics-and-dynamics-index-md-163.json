@@ -1,0 +1,24 @@
+{
+  "id": "module3-robot-kinematics-and-dynamics/index",
+  "title": "Module 3: Robot Kinematics and Dynamics",
+  "description": "1. Introduction to Kinematics and Dynamics",
+  "source": "@site/docs/module3-robot-kinematics-and-dynamics/index.md",
+  "sourceDirName": "module3-robot-kinematics-and-dynamics",
+  "slug": "/module3-robot-kinematics-and-dynamics/",
+  "permalink": "/Project-Hackathon-I/docs/module3-robot-kinematics-and-dynamics/",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/MohammadNoman/Project-Hackathon-I/tree/master/frontend/docs/module3-robot-kinematics-and-dynamics/index.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Module 2: Robot Sensing and Perception",
+    "permalink": "/Project-Hackathon-I/docs/module2-robot-sensing-and-perception/outline"
+  },
+  "next": {
+    "title": "Module 3: Robot Kinematics and Dynamics",
+    "permalink": "/Project-Hackathon-I/docs/module3-robot-kinematics-and-dynamics/outline"
+  }
+}

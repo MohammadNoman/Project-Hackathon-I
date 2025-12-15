@@ -1,0 +1,24 @@
+{
+  "id": "module8-reinforcement-learning-for-robotics/index",
+  "title": "Module 8: Reinforcement Learning for Robotics",
+  "description": "1. Introduction to Reinforcement Learning (RL) in Robotics",
+  "source": "@site/docs/module8-reinforcement-learning-for-robotics/index.md",
+  "sourceDirName": "module8-reinforcement-learning-for-robotics",
+  "slug": "/module8-reinforcement-learning-for-robotics/",
+  "permalink": "/Project-Hackathon-I/docs/module8-reinforcement-learning-for-robotics/",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/MohammadNoman/Project-Hackathon-I/tree/master/frontend/docs/module8-reinforcement-learning-for-robotics/index.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Module 7: Humanoid Robot Manipulation and Interaction",
+    "permalink": "/Project-Hackathon-I/docs/module7-humanoid-robot-manipulation-and-interaction/outline"
+  },
+  "next": {
+    "title": "Module 8: Reinforcement Learning for Robotics",
+    "permalink": "/Project-Hackathon-I/docs/module8-reinforcement-learning-for-robotics/outline"
+  }
+}

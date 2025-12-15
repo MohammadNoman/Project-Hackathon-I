@@ -1,0 +1,24 @@
+{
+  "id": "module2-robot-sensing-and-perception/index",
+  "title": "Module 2: Robot Sensing and Perception",
+  "description": "1. Introduction to Robot Sensing",
+  "source": "@site/docs/module2-robot-sensing-and-perception/index.md",
+  "sourceDirName": "module2-robot-sensing-and-perception",
+  "slug": "/module2-robot-sensing-and-perception/",
+  "permalink": "/Project-Hackathon-I/docs/module2-robot-sensing-and-perception/",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/MohammadNoman/Project-Hackathon-I/tree/master/frontend/docs/module2-robot-sensing-and-perception/index.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Module 1: The Robotic Nervous System (ROS 2)",
+    "permalink": "/Project-Hackathon-I/docs/module1-ros2-nervous-system/outline"
+  },
+  "next": {
+    "title": "Module 2: Robot Sensing and Perception",
+    "permalink": "/Project-Hackathon-I/docs/module2-robot-sensing-and-perception/outline"
+  }
+}

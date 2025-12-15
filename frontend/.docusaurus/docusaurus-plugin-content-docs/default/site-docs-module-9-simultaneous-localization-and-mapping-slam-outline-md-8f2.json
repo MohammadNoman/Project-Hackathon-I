@@ -1,0 +1,24 @@
+{
+  "id": "module9-simultaneous-localization-and-mapping-slam/outline",
+  "title": "Module 9: Simultaneous Localization and Mapping (SLAM)",
+  "description": "1. Introduction to SLAM",
+  "source": "@site/docs/module9-simultaneous-localization-and-mapping-slam/outline.md",
+  "sourceDirName": "module9-simultaneous-localization-and-mapping-slam",
+  "slug": "/module9-simultaneous-localization-and-mapping-slam/outline",
+  "permalink": "/Project-Hackathon-I/docs/module9-simultaneous-localization-and-mapping-slam/outline",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/MohammadNoman/Project-Hackathon-I/tree/master/frontend/docs/module9-simultaneous-localization-and-mapping-slam/outline.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Module 9: Simultaneous Localization and Mapping (SLAM)",
+    "permalink": "/Project-Hackathon-I/docs/module9-simultaneous-localization-and-mapping-slam/"
+  },
+  "next": {
+    "title": "Module 10: Robot-Human Interaction (HRI)",
+    "permalink": "/Project-Hackathon-I/docs/module10-robot-human-interaction/"
+  }
+}

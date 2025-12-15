@@ -1,0 +1,24 @@
+{
+  "id": "assessments/module1-assessments",
+  "title": "Module 1: The Robotic Nervous System (ROS 2) - Assessments",
+  "description": "Quizzes / Short Answer Questions",
+  "source": "@site/docs/assessments/module1-assessments.md",
+  "sourceDirName": "assessments",
+  "slug": "/assessments/module1-assessments",
+  "permalink": "/Project-Hackathon-I/docs/assessments/module1-assessments",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/MohammadNoman/Project-Hackathon-I/tree/master/frontend/docs/assessments/module1-assessments.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Module 13: Future of Humanoid Robotics and AI",
+    "permalink": "/Project-Hackathon-I/docs/module13-future-of-humanoid-robotics-and-ai/outline"
+  },
+  "next": {
+    "title": "Module 2: Robot Sensing and Perception - Assessments",
+    "permalink": "/Project-Hackathon-I/docs/assessments/module2-assessments"
+  }
+}

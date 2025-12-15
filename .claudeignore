@@ -1,0 +1,91 @@
+# Dependencies
+node_modules/
+frontend/node_modules/
+frontend/.docusaurus/
+frontend/build/
+frontend/.cache/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+backend/.venv/
+backend/venv/
+backend/env/
+*.egg-info/
+dist/
+build/
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+*.env
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+logs/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*.swn
+.DS_Store
+
+# Git
+.git/
+.gitignore
+
+# Build artifacts
+*.min.js
+*.min.css
+*.map
+
+# Test coverage
+coverage/
+.coverage
+htmlcov/
+.pytest_cache/
+.tox/
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+
+# Temporary files
+*.tmp
+*.temp
+.cache/
+tmp/
+
+# Package managers
+package-lock.json
+yarn.lock
+poetry.lock
+
+# Documentation builds
+docs/_build/
+site/
+
+# Large binary files
+*.mp4
+*.mov
+*.avi
+*.mkv
+*.exe
+*.dll
+*.so
+*.dylib
+
+# Spec-Kit generated
+.specify/cache/
+history/artifacts/*.mp4
+history/artifacts/*.webm

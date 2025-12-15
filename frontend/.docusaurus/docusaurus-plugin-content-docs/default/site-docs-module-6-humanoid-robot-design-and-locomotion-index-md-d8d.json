@@ -1,0 +1,24 @@
+{
+  "id": "module6-humanoid-robot-design-and-locomotion/index",
+  "title": "Module 6: Humanoid Robot Design and Locomotion",
+  "description": "1. Introduction to Humanoid Robots",
+  "source": "@site/docs/module6-humanoid-robot-design-and-locomotion/index.md",
+  "sourceDirName": "module6-humanoid-robot-design-and-locomotion",
+  "slug": "/module6-humanoid-robot-design-and-locomotion/",
+  "permalink": "/Project-Hackathon-I/docs/module6-humanoid-robot-design-and-locomotion/",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/MohammadNoman/Project-Hackathon-I/tree/master/frontend/docs/module6-humanoid-robot-design-and-locomotion/index.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Module 5: Robot Learning and Adaptation",
+    "permalink": "/Project-Hackathon-I/docs/module5-robot-learning-and-adaptation/outline"
+  },
+  "next": {
+    "title": "Module 6: Humanoid Robot Design and Locomotion",
+    "permalink": "/Project-Hackathon-I/docs/module6-humanoid-robot-design-and-locomotion/outline"
+  }
+}

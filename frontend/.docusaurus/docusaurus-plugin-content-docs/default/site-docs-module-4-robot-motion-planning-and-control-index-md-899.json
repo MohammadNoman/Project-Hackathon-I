@@ -1,0 +1,24 @@
+{
+  "id": "module4-robot-motion-planning-and-control/index",
+  "title": "Module 4: Robot Motion Planning and Control",
+  "description": "1. Introduction to Motion Planning",
+  "source": "@site/docs/module4-robot-motion-planning-and-control/index.md",
+  "sourceDirName": "module4-robot-motion-planning-and-control",
+  "slug": "/module4-robot-motion-planning-and-control/",
+  "permalink": "/Project-Hackathon-I/docs/module4-robot-motion-planning-and-control/",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/MohammadNoman/Project-Hackathon-I/tree/master/frontend/docs/module4-robot-motion-planning-and-control/index.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Module 3: Robot Kinematics and Dynamics",
+    "permalink": "/Project-Hackathon-I/docs/module3-robot-kinematics-and-dynamics/outline"
+  },
+  "next": {
+    "title": "Module 4: Robot Motion Planning and Control",
+    "permalink": "/Project-Hackathon-I/docs/module4-robot-motion-planning-and-control/outline"
+  }
+}

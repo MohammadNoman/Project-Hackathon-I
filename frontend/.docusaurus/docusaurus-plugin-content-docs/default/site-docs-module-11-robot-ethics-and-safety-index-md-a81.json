@@ -1,0 +1,24 @@
+{
+  "id": "module11-robot-ethics-and-safety/index",
+  "title": "Module 11: Robot Ethics and Safety",
+  "description": "11.1 Introduction to Robot Ethics",
+  "source": "@site/docs/module11-robot-ethics-and-safety/index.md",
+  "sourceDirName": "module11-robot-ethics-and-safety",
+  "slug": "/module11-robot-ethics-and-safety/",
+  "permalink": "/Project-Hackathon-I/docs/module11-robot-ethics-and-safety/",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/MohammadNoman/Project-Hackathon-I/tree/master/frontend/docs/module11-robot-ethics-and-safety/index.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Module 10: Robot-Human Interaction (HRI)",
+    "permalink": "/Project-Hackathon-I/docs/module10-robot-human-interaction/outline"
+  },
+  "next": {
+    "title": "Module 11: Robot Ethics and Safety",
+    "permalink": "/Project-Hackathon-I/docs/module11-robot-ethics-and-safety/outline"
+  }
+}

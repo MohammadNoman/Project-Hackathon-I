@@ -1,0 +1,24 @@
+{
+  "id": "module1-ros2-nervous-system/index",
+  "title": "Module 1: The Robotic Nervous System (ROS 2)",
+  "description": "1. Introduction to ROS 2",
+  "source": "@site/docs/module1-ros2-nervous-system/index.md",
+  "sourceDirName": "module1-ros2-nervous-system",
+  "slug": "/module1-ros2-nervous-system/",
+  "permalink": "/Project-Hackathon-I/docs/module1-ros2-nervous-system/",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/MohammadNoman/Project-Hackathon-I/tree/master/frontend/docs/module1-ros2-nervous-system/index.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Tutorial Intro",
+    "permalink": "/Project-Hackathon-I/docs/intro"
+  },
+  "next": {
+    "title": "Module 1: The Robotic Nervous System (ROS 2)",
+    "permalink": "/Project-Hackathon-I/docs/module1-ros2-nervous-system/outline"
+  }
+}

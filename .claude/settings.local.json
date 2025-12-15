@@ -31,7 +31,21 @@
       "Bash(gemini:*)",
       "Bash(gemini-cli:*)",
       "Bash(qwen:*)",
-      "Bash(qwen-cli:*)"
+      "Bash(qwen-cli:*)",
+      "SlashCommand(/impl-chatbot complete RAG chatbot implementation for T028-T030: enhance existing backend/app/api/chatbot.py and backend/app/core/rag.py to support full RAG query pipeline with selected_text parameter)",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "Bash(gh run list:*)",
+      "Bash(gh run view:*)",
+      "SlashCommand(/delegate-gemini Generate comprehensive educational content for Module 1 (ROS2 Nervous System) of the Physical AI Textbook. Read the outline at frontend/docs/module1-ros2-nervous-system/outline.md and expand each section into detailed educational content with explanations, examples, and code snippets. Write the content to frontend/docs/module1-ros2-nervous-system/index.md. Use MDX format compatible with Docusaurus. Include practical ROS2 code examples in Python.)",
+      "Bash(powershell -c \"(Get-Content ''C:\\Users\\SM TRADERs\\Downloads\\Hackathon-1\\frontend\\docs\\module1-ros2-nervous-system\\index.md'').Count\")",
+      "SlashCommand(/sp.git.commit_pr)",
+      "Bash(git rev-parse:*)",
+      "Bash(npm run build:*)",
+      "Bash(findstr:*)",
+      "Bash(Copy-Item -Path \"D:\\REUSABLE\\reusable-intelligence\" -Destination \"C:\\Users\\SM TRADERs\\Downloads\\Hackathon-1\"\" -Recurse -Force)",
+      "Bash(echo \"TASK FOR GEMINI:\n\nYou are a file operations agent. Execute these tasks:\n\nTASK 1: Copy agent file\n- Source: reusable-intelligence/agents/ui-worker-gemini.md\n- Destination: .claude/agents/ui-worker-gemini.md\n\nTASK 2: Copy skill folder (entire directory with all subfolders)\n- Source: reusable-intelligence/skills/visual-excellence/\n- Destination: .claude/skills/visual-excellence/\n\nTASK 3: Update CLAUDE.md - Add this to the ''Quick Reference: All Available Resources'' section:\n\nAdd to Agents table:\n| \\`@ui-worker-gemini\\` | Gemini UI Builder | UI, visual, component, frontend |\n\nAdd to Skills section after existing skills:\n**Visual Excellence** → \\`visual-excellence\\` skill provides:\n- Futuristic UI design system (Slate-950 backgrounds, Cyan/Blue gradients)\n- Components: GradientTitle.tsx, InteractiveCard.tsx\n- Styles: global.css, tailwind.preset.js\n- Use when building premium UI components\n\nTASK 4: Output the updated directory structure showing:\n.claude/\n├── agents/\n│   ├── better-auth-agent.md\n│   ├── chatkit-agent.md\n│   ├── content-agent.md\n│   ├── nextjs-agent.md\n│   ├── personalization-agent.md\n│   ├── sdk-agent.md\n│   ├── testing-agent.md\n│   └── ui-worker-gemini.md (NEW)\n├── skills/\n│   ├── docusaurus-patterns/\n│   ├── fastapi-patterns/\n│   ├── gemini-delegator/\n│   ├── qwen-delegator/\n│   └── visual-excellence/ (NEW)\n│       ├── manifest.md\n│       ├── README.md\n│       ├── components/\n│       │   ├── GradientTitle.tsx\n│       │   └── InteractiveCard.tsx\n│       └── styles/\n│           ├── global.css\n│           └── tailwind.preset.js\n\nExecute PowerShell commands and confirm completion.\")",
+      "Bash(gemini)",
+      "Bash(gemini --prompt \"Execute these PowerShell commands in C:\\Users\\SM TRADERs\\Downloads\\Hackathon-1:\n\n1. Remove the reusable-intelligence folder:\nRemove-Item -Path reusable-intelligence -Recurse -Force\n\n2. Copy one agent from D:\\REUSABLE\\reusable-intelligence\\agents\\ui-worker-gemini.md to .claude\\agents\\\n\n3. Copy one skill folder from D:\\REUSABLE\\reusable-intelligence\\skills\\visual-excellence\\ to .claude\\skills\\visual-excellence\\\n\n4. Update CLAUDE.md to add ui-worker-gemini agent and visual-excellence skill in the Quick Reference tables\n\n5. Show final .claude directory structure\n\nExecute and confirm.\")"
     ],
     "deny": [],
     "ask": []

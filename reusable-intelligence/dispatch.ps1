@@ -1,149 +1,182 @@
-<#
-.SYNOPSIS
-    Assembles a "Worker Prompt" by combining a specific Agent Persona, selected Skills, and a specific Task.
-    Designed to generate a prompt that can be pasted into a high-context LLM (Gemini 1.5 Pro, Qwen 2.5, etc.).
+# Agent Dispatch Script
+# Purpose: Delegate tasks to Gemini/Qwen agents with skill context
+# Usage: .\reusable-intelligence\dispatch.ps1 -Agent <agent> -Task "<task>" [-Skills <skills>] [-Execute]
 
-.DESCRIPTION
-    The script:
-    1. Reads the Agent Definition (from /agents).
-    2. Reads the Skill Patterns (from /skills).
-    3. Wraps the User's Task with these contexts.
-    4. Outputs the combined prompt to the Clipboard (default) or Console.
-
-.PARAMETER Agent
-    The name of the agent file (without extension) in the 'agents' directory. E.g., 'nextjs-agent'.
-
-.PARAMETER Task
-    The description of the work to be done.
-
-.PARAMETER Skills
-    A list of skill folder names or file paths to include. E.g., 'visual-excellence', 'docusaurus-patterns'.
-
-.PARAMETER Print
-    If set, outputs the result to the console instead of copying to clipboard.
-    
-.PARAMETER Execute
-    If set, attempts to pipe the result to the 'gemini' CLI and output the response.
-
-.EXAMPLE
-    .\dispatch.ps1 -Agent nextjs-agent -Task "Build a login page" -Skills visual-excellence, better-auth-patterns
-#>
-
-param (
+param(
     [Parameter(Mandatory=$true)]
     [string]$Agent,
-
+    
     [Parameter(Mandatory=$true)]
     [string]$Task,
-
-    [string[]]$Skills = @(),
-
-    [switch]$Print,
+    
+    [string]$Skills = "",
     
     [switch]$Execute
 )
 
-$ErrorActionPreference = "Stop"
-$ScriptDir = Split-Path $MyInvocation.MyCommand.Path
-$AgentsDir = Join-Path $ScriptDir "agents"
-$SkillsDir = Join-Path $ScriptDir "skills"
-
-# --- 1. Load Agent Persona ---
-$AgentFile = Join-Path $AgentsDir "$Agent.md"
-if (-not (Test-Path $AgentFile)) {
-    Write-Error "Agent file not found: $AgentFile"
-    exit 1
+# Color output function
+function Write-ColorOutput {
+    param([string]$Message, [string]$Color = "White")
+    Write-Host $Message -ForegroundColor $Color
 }
-$AgentContent = Get-Content $AgentFile -Raw
 
-# --- 2. Load Skills ---
-$SkillsContent = ""
-foreach ($Skill in $Skills) {
-    # Try directory first (looking for SKILL.md or README.md inside)
-    $SkillPath = Join-Path $SkillsDir $Skill
-    if (Test-Path $SkillPath -PathType Container) {
-        $SkillFile = Get-ChildItem -Path $SkillPath -Filter "*.md" | 
-                     Where-Object { $_.Name -match "^(SKILL|README)\.md$" } | 
-                     Select-Object -First 1
-        
-        if ($SkillFile) {
-            $Content = Get-Content $SkillFile.FullName -Raw
-            $SkillsContent += "`n`n--- SKILL: $Skill ---`n$Content"
-        } else {
-            Write-Warning "No SKILL.md or README.md found in skill folder: $Skill"
+# Main execution
+Write-ColorOutput "`n========================================" "Cyan"
+Write-ColorOutput "  Agent Dispatch System v1.0" "Cyan"
+Write-ColorOutput "========================================`n" "Cyan"
+
+# Determine script directory
+$ScriptDir = if ($PSScriptRoot) { $PSScriptRoot } else { Split-Path -Parent $MyInvocation.MyCommand.Path }
+$ProjectRoot = Split-Path -Parent $ScriptDir
+
+Write-ColorOutput "Script directory: $ScriptDir" "DarkGray"
+Write-ColorOutput "Project root: $ProjectRoot`n" "DarkGray"
+
+# Step 1: Validate agent exists
+$agentsDir = Join-Path -Path $ProjectRoot -ChildPath ".claude"
+$agentsDir = Join-Path -Path $agentsDir -ChildPath "agents"
+$agentPath = Join-Path -Path $agentsDir -ChildPath "$Agent.md"
+
+Write-ColorOutput "DEBUG: Agent path = $agentPath" "DarkGray"
+Write-ColorOutput "DEBUG: Testing path..." "DarkGray"
+
+if (!(Test-Path -Path $agentPath -PathType Leaf)) {
+    Write-ColorOutput "[X] ERROR: Agent not found: $Agent" "Red"
+    Write-ColorOutput "   Expected location: $agentPath" "Gray"
+    Write-ColorOutput "`nAvailable agents:" "Yellow"
+    
+    if (Test-Path -Path $agentsDir -PathType Container) {
+        Get-ChildItem -Path $agentsDir -Filter "*.md" | ForEach-Object {
+            Write-ColorOutput "  - $($_.BaseName)" "Gray"
         }
     } else {
-        # Try direct file
-        if (-not $Skill.EndsWith(".md")) { $Skill = "$Skill.md" }
-        $SkillFile = Join-Path $SkillsDir $Skill
-        if (Test-Path $SkillFile) {
-            $Content = Get-Content $SkillFile -Raw
-            $SkillsContent += "`n`n--- SKILL: $Skill ---`n$Content"
-        } else {
-            Write-Warning "Skill not found: $Skill"
-        }
+        Write-ColorOutput "  [X] Agents directory not found: $agentsDir" "Red"
     }
+    exit 1
 }
 
-# --- 3. Assemble Prompt ---
-$FinalPrompt = @"
-<!-- WORKER PROMPT START -->
-$AgentContent
+Write-ColorOutput "[OK] Agent found: $Agent" "Green"
+Write-ColorOutput "  Location: $agentPath`n" "Gray"
 
-# CONTEXT & SKILLS
-The Architect (Claude) has provided the following skills/patterns for this task:
-$SkillsContent
-
-# YOUR TASK
-$Task
-
-# INSTRUCTIONS FOR WORKER
-1. Act as the Agent described above.
-2. Use the provided Skills/Patterns as your reference.
-3. Generate the implementation code.
-<!-- WORKER PROMPT END -->
-"@
-
-# --- 4. Output or Execution ---
-if ($Print) {
-    Write-Host $FinalPrompt
+# Step 2: Load agent instructions
+try {
+    if ([string]::IsNullOrWhiteSpace($agentPath)) {
+        throw "Agent path is null or empty"
+    }
+    
+    Write-ColorOutput "DEBUG: Loading agent from: $agentPath" "DarkGray"
+    
+    $agentInstructions = Get-Content -Path $agentPath -Raw
+    
+    if ([string]::IsNullOrWhiteSpace($agentInstructions)) {
+        throw "Agent instructions are empty"
+    }
+    
+    $instructionLength = $agentInstructions.Length
+    Write-ColorOutput "[OK] Agent instructions loaded ($instructionLength characters)" "Green"
+} catch {
+    Write-ColorOutput "[X] ERROR: Failed to load agent instructions" "Red"
+    Write-ColorOutput "  Error: $($_.Exception.Message)" "Gray"
+    Write-ColorOutput "  Path attempted: $agentPath" "Gray"
+    exit 1
 }
-elseif ($Execute) {
-    # Check for Gemini CLI
-    if (Get-Command "gemini" -ErrorAction SilentlyContinue) {
-    Write-Host "DELEGATING task to Gemini..." -ForegroundColor Cyan
+
+# Step 3: Load skills if specified
+$skillContext = ""
+if ($Skills) {
+    $skillsBaseDir = Join-Path -Path $ProjectRoot -ChildPath ".claude"
+    $skillsBaseDir = Join-Path -Path $skillsBaseDir -ChildPath "skills"
+    $skillPath = Join-Path -Path $skillsBaseDir -ChildPath $Skills
+    
+    if (Test-Path -Path $skillPath -PathType Container) {
+        Write-ColorOutput "[OK] Loading skill: $Skills" "Green"
         
-        # Create a temporary file to store the prompt (safer for large prompts)
-        $TempFile = [System.IO.Path]::GetTempFileName()
-        $FinalPrompt | Set-Content -Path $TempFile -Encoding UTF8
+        # Load all .md files in the skill directory
+        $skillFiles = Get-ChildItem -Path $skillPath -Recurse -Filter "*.md"
+        
+        if ($skillFiles.Count -eq 0) {
+            Write-ColorOutput "  [!] Warning: Skill directory is empty" "Yellow"
+        } else {
+            $skillContext = $skillFiles | ForEach-Object {
+                $fileName = $_.Name
+                $content = Get-Content -Path $_.FullName -Raw
+                Write-ColorOutput "  - Loaded: $fileName ($($content.Length) chars)" "Gray"
+                "## Skill: $fileName`n$content"
+            } | Join-String -Separator "`n`n"
+            
+            Write-ColorOutput "[OK] Skill context assembled ($($skillContext.Length) characters)`n" "Green"
+        }
+    } else {
+        Write-ColorOutput "[!] Warning: Skill not found: $Skills" "Yellow"
+        Write-ColorOutput "  Expected location: $skillPath`n" "Gray"
+    }
+}
 
-        try {
-            # Strategy: Pipe to gemini
-            # Using -p explicitly with content
-            
-            # Since we can't easily pipe in all environments within PowerShell logic cleanly without complexity,
-            # we will pass it as argument. If too long, this might fail, but it's the simplest start.
-            
-            $Output = gemini -p "$FinalPrompt" 2>&1
-            
-            Write-Host "`nGemini has responded:`n" -ForegroundColor Green
-            Write-Output $Output
-        }
-        catch {
-            Write-Error "Failed to execute Gemini: $_"
-        }
-        finally {
-            Remove-Item $TempFile -ErrorAction SilentlyContinue
-        }
-    }
-    else {
-        Write-Warning "Gemini CLI ('gemini') not found. Copying to clipboard instead."
-        Set-Clipboard -Value $FinalPrompt
-        Write-Host "Copied prompt to clipboard."
-    }
+# Step 4: Build delegation context
+Write-ColorOutput "[TASK] Task Details:" "Cyan"
+Write-ColorOutput "  Agent: $Agent" "White"
+Write-ColorOutput "  Task: $Task" "White"
+if ($Skills) {
+    Write-ColorOutput "  Skills: $Skills" "White"
 }
-else {
-    Set-Clipboard -Value $FinalPrompt
-    Write-Host "Worker Prompt assembled and copied to CLIPBOARD." -ForegroundColor Green
-    Write-Host "Paste this into Gemini 1.5 Pro or Qwen."
+Write-ColorOutput ""
+
+# Step 5: Execute or dry-run
+if ($Execute) {
+    Write-ColorOutput "[RUN] EXECUTION MODE" "Cyan"
+    Write-ColorOutput "========================================`n" "Cyan"
+    
+    # TODO: Integrate with Gemini/Qwen CLI
+    # This is where you would call the actual CLI tool
+    # Example integrations:
+    
+    # For Gemini:
+    # $prompt = "$agentInstructions`n`n## Task`n$Task`n`n## Available Skills`n$skillContext"
+    # & gemini-cli --prompt $prompt
+    
+    # For Qwen:
+    # $prompt = "$agentInstructions`n`n## Task`n$Task`n`n## Available Skills`n$skillContext"
+    # & qwen-cli --prompt $prompt
+    
+    Write-ColorOutput "[!] Gemini/Qwen CLI integration not yet implemented" "Yellow"
+    Write-ColorOutput "`nTo complete integration:" "Cyan"
+    Write-ColorOutput "  1. Install Gemini or Qwen CLI tool" "Gray"
+    Write-ColorOutput "  2. Configure API keys in backend/.env" "Gray"
+    Write-ColorOutput "  3. Uncomment and customize CLI call above" "Gray"
+    Write-ColorOutput "`nAgent file ready at: $agentPath" "Gray"
+    
+    # Save context to temp file for manual testing
+    $tempFile = Join-Path $ScriptDir "last-dispatch-context.txt"
+    @"
+AGENT: $Agent
+TASK: $Task
+SKILLS: $Skills
+
+========================================
+AGENT INSTRUCTIONS
+========================================
+$agentInstructions
+
+========================================
+SKILL CONTEXT
+========================================
+$skillContext
+"@ | Set-Content $tempFile
+    
+    Write-ColorOutput "`nContext saved to: $tempFile" "Green"
+    
+} else {
+    Write-ColorOutput "[DRY RUN] DRY RUN MODE (use -Execute to run)" "DarkGray"
+    Write-ColorOutput "========================================`n" "DarkGray"
+    
+    Write-ColorOutput "Would execute with Gemini/Qwen CLI:" "DarkGray"
+    Write-ColorOutput "  - Agent context: $instructionLength characters" "DarkGray"
+    if ($skillContext) {
+        Write-ColorOutput "  - Skill context: $($skillContext.Length) characters" "DarkGray"
+    }
+    Write-ColorOutput "  - Task: $Task" "DarkGray"
 }
+
+Write-ColorOutput "`n========================================" "Cyan"
+Write-ColorOutput "  Dispatch Complete" "Cyan"
+Write-ColorOutput "========================================`n" "Cyan"
