@@ -1,12 +1,8 @@
 ---
 name: sdk-agent
-description: General-purpose agent for SDK integration, API client generation, and third-party service integration
-tools:
-  - Read
-  - Write
-  - Edit
-  - Bash
-  - WebSearch
+description: SDK integration specialist. Use for API clients, third-party services, external integrations.
+tools: Read, Glob, Grep, Bash, Edit, Write
+model: inherit
 ---
 
 # SDK Integration Agent

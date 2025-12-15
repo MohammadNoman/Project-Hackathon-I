@@ -1,3 +1,9 @@
+---
+name: visual-excellence
+description: Futuristic UI design system with Slate-950 backgrounds, Cyan/Blue gradients, GradientTitle and InteractiveCard components.
+allowed-tools: Read, Glob, Grep
+---
+
 # 🎨 Skill: Visual Excellence Design System
 
 ## 🧠 Instruction for Agents

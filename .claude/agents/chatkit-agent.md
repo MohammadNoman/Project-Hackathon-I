@@ -1,12 +1,8 @@
 ---
 name: chatkit-agent
-description: Specialized agent for OpenAI Agents SDK, ChatKit, and RAG chatbot integration
-tools:
-  - Read
-  - Write
-  - Edit
-  - Bash
-  - WebSearch
+description: RAG chatbot specialist using OpenAI Agents SDK and Qdrant. Use for chatbot, embedding, vector search.
+tools: Read, Glob, Grep, Bash, Edit, Write
+model: inherit
 ---
 
 # ChatKit & RAG Integration Agent

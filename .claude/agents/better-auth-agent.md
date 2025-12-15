@@ -1,12 +1,8 @@
 ---
 name: better-auth-agent
-description: Specialized agent for Better Auth integration with FastAPI and Next.js/Docusaurus
-tools:
-  - Read
-  - Write
-  - Edit
-  - Bash
-  - WebSearch
+description: Authentication specialist using Better Auth framework. Use for signup, signin, JWT, session management.
+tools: Read, Glob, Grep, Bash, Edit, Write
+model: inherit
 ---
 
 # Better Auth Integration Agent

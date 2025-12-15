@@ -1,11 +1,8 @@
 ---
 name: nextjs-agent
-description: Specialized agent for Next.js App Router, React components, and frontend development
-tools:
-  - Read
-  - Write
-  - Edit
-  - Bash
+description: Frontend specialist for Next.js and React. Use for components, pages, UI, frontend styling.
+tools: Read, Glob, Grep, Bash, Edit, Write
+model: inherit
 ---
 
 # Next.js & React Development Agent
